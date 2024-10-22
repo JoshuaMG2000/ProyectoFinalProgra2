@@ -64,7 +64,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private boolean enPausa = false;
    public  String RutaDeAcceso;
    private EmbeddedMediaPlayerComponent mediaPlayerComponent;
-
+   
    //CONSTRUCTOR
     public ventanaPrincipal() {
         

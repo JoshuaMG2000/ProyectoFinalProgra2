@@ -4,6 +4,8 @@
 
 package com.edu.netbeans.proyectoprograv2jdmg;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Josue
@@ -11,7 +13,11 @@ package com.edu.netbeans.proyectoprograv2jdmg;
 public class ProyectoPrograV2JDMG {
 
     public static void main(String[] args) {
+            
             ventanaPrincipal principal = new ventanaPrincipal();
             principal.setVisible(true);
+            JOptionPane.showMessageDialog(null, "PRUEBA DE COMMIT");
+            
     }
+    
 }
