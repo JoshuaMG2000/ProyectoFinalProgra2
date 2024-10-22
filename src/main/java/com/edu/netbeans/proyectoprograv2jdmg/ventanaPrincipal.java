@@ -50,6 +50,14 @@ import org.xml.sax.SAXException;
 // Clase de la librería VLCJ, Componente para reproducir multimedia incrustado en una ventana.
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent; 
 
+
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Directory;
+import com.drew.metadata.exif.ExifIFD0Directory;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 /**
  *
  * @author Josue David Martinez Galdámez
@@ -57,11 +65,9 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 //MI CLASE PRINCIPAL
 public class ventanaPrincipal extends javax.swing.JFrame {
-    /**
-     * Creates new form ventanaPrincipal
-     */
-    private Player reproductorActual;
-    private boolean enPausa = false;
+
+   private Player reproductorActual;
+   private boolean enPausa = false;
    public  String RutaDeAcceso;
    private EmbeddedMediaPlayerComponent mediaPlayerComponent;
    
@@ -374,7 +380,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 "Nombre", "Extensión", "Ruta", "Fecha Creación", "Fecha Modif", "Tamaño", "Dispositivo", "Modelo Disp."
             }
         ));
+        tablaDatosFotos.setFocusable(false);
         tablaDatosFotos.setGridColor(new java.awt.Color(255, 255, 255));
+        tablaDatosFotos.setSelectionBackground(new java.awt.Color(0, 51, 51));
+        tablaDatosFotos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaDatosFotos.setShowGrid(true);
         jScrollPaneFotos.setViewportView(tablaDatosFotos);
 
@@ -744,6 +753,69 @@ public void buscarArchivosMP4(File directorio, DefaultTableModel modeloTabla) {
     }
 }
 
+public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla) {
+    File[] archivos = directorio.listFiles();
+
+    if (archivos != null) {
+        for (File archivo : archivos) {
+            if (archivo.isDirectory()) {
+                buscarArchivosImagen(archivo, modeloTabla);
+            } else if (archivo.isFile() && (archivo.getName().toLowerCase().endsWith(".jpg") || archivo.getName().toLowerCase().endsWith(".png"))) {
+                try {
+                    // Extraer la metadata de la imagen
+                    com.drew.metadata.Metadata metadata = ImageMetadataReader.readMetadata(archivo);
+
+                    // Información básica del archivo
+                    String nombre = archivo.getName();
+                    String extension = nombre.substring(nombre.lastIndexOf(".") + 1);
+                    String ruta = archivo.getAbsolutePath();
+                    long tamaño = archivo.length(); // En bytes
+                    Path filePath = archivo.toPath();
+                    BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
+                    String fechaCreacion = attr.creationTime().toString();
+                    String fechaModificacion = attr.lastModifiedTime().toString();
+
+                    // Información del dispositivo y modelo (si está disponible)
+                    String dispositivo = "Desconocido";
+                    String modelo = "Desconocido";
+                    
+                    for (Directory directory : metadata.getDirectories()) {
+                        for (com.drew.metadata.Tag tag : directory.getTags()) {
+                            // Imprimir todos los metadatos (opcional, para depuración)
+                            System.out.println(tag);
+
+                            // Buscar campos específicos
+                            if (directory.containsTag(ExifIFD0Directory.TAG_MAKE)) {
+                                dispositivo = directory.getString(ExifIFD0Directory.TAG_MAKE); // Marca del dispositivo
+                            }
+                            if (directory.containsTag(ExifIFD0Directory.TAG_MODEL)) {
+                                modelo = directory.getString(ExifIFD0Directory.TAG_MODEL); // Modelo del dispositivo
+                            }
+                        }
+                    }
+
+                    // Crear fila para la tabla
+                    Object[] fila = {
+                        nombre,
+                        extension,
+                        ruta,
+                        fechaCreacion,
+                        fechaModificacion,
+                        tamaño / (1024 * 1024) + " MB", // Tamaño en MB
+                        dispositivo,
+                        modelo
+                    };
+
+                    // Añadir la fila a la tabla
+                    modeloTabla.addRow(fila);
+
+                } catch (ImageProcessingException | IOException e) {
+                      e.printStackTrace();
+                }
+            }
+        }
+    }
+}
     private void textFieldMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMusicaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldMusicaActionPerformed
@@ -945,8 +1017,22 @@ public void buscarArchivosMP4(File directorio, DefaultTableModel modeloTabla) {
     }//GEN-LAST:event_Panel_FondoComponentShown
 
     private void botonFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFotosActionPerformed
+       
+    // Verificar si el reproductor actual no es null y está en uso antes de cerrarlo
+    if (reproductorActual != null) {
+        reproductorActual.close(); // Detiene el reproductor si está activo
+        reproductorActual = null; // Lo resetea a null después de cerrarlo
+    }
+
+    // Verificar si la ruta de acceso está vacía
+    if (RutaDeAcceso == null || RutaDeAcceso.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona primero una carpeta.");
+        return;
+    }
+        
        jScrollPaneFotos.setVisible(true);
        tablaDatosFotos.setVisible(true);
+       
        jScrollPaneMyV.setVisible(false);
        tablaDatosMyV.setVisible(false);
        botonRegresarMusica.setEnabled(false);
@@ -963,8 +1049,18 @@ public void buscarArchivosMP4(File directorio, DefaultTableModel modeloTabla) {
        botonVerImagen.setEnabled(true);
        botonRegresarImagen.setEnabled(true);
        botonSiguienteImagen.setEnabled(true);
-       reproductorActual.close();
        botonReproducirVideo.setVisible(false);
+       botonReproducirVideo.setEnabled(false);
+       
+    // Crear el modelo de tabla para las imágenes y limpiar los datos previos
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosFotos.getModel();
+    modeloTabla.setRowCount(0); // Limpiar datos existentes
+
+    // Llamar al método para buscar imágenes
+    File directorioSeleccionado = new File(RutaDeAcceso);
+      buscarArchivosImagen(directorioSeleccionado, modeloTabla);
+       
+       
        
     }//GEN-LAST:event_botonFotosActionPerformed
 

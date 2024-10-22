@@ -16,7 +16,7 @@ public class ProyectoPrograV2JDMG {
             
             ventanaPrincipal principal = new ventanaPrincipal();
             principal.setVisible(true);
-            JOptionPane.showMessageDialog(null, "PRUEBA DE COMMIT");
+            
             
     }
     
