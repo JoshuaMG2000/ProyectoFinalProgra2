@@ -193,11 +193,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         textFieldTotal.setEditable(false);
         textFieldTotal.setBackground(new java.awt.Color(0, 0, 0));
         textFieldTotal.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        textFieldTotal.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.add(textFieldTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 99, -1));
 
         textFieldFotos.setEditable(false);
         textFieldFotos.setBackground(new java.awt.Color(0, 0, 0));
         textFieldFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        textFieldFotos.setForeground(new java.awt.Color(255, 255, 255));
         textFieldFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldFotosActionPerformed(evt);
@@ -633,6 +635,29 @@ private double calcularPesoMP4(File carpeta) {
     return totalSizeGB;
 }
     
+private double calcularPesoImagenes(File carpeta) {
+    double totalSizeGB = 0.0;
+
+    // Verifica si la ruta es un directorio
+    if (carpeta.isDirectory()) {
+        File[] archivos = carpeta.listFiles(); // Obtiene un arreglo de File con todos los archivos y subdirectorios que contiene la carpeta.
+        if (archivos != null) {
+            // Recorre cada archivo de la carpeta
+            for (File archivo : archivos) {
+                if (archivo.isFile() && (archivo.getName().toLowerCase().endsWith(".jpg") || archivo.getName().toLowerCase().endsWith(".png"))) { // Verifica las extensiones de imagen
+                    // Sumar el tamaño del archivo en GB
+                    totalSizeGB += archivo.length() / (1024.0 * 1024.0 * 1024.0); // Convertir a GB
+                } else if (archivo.isDirectory()) {
+                    // Llamar recursivamente a la misma función para subdirectorios
+                    totalSizeGB += calcularPesoImagenes(archivo);
+                }
+            }
+        }
+    }
+    return totalSizeGB;
+}
+
+
 private void buscarArchivosMP3(File directorio, DefaultTableModel modeloTabla) {
     // Obtener la lista de archivos y directorios dentro del directorio proporcionado
     File[] archivos = directorio.listFiles();
@@ -845,15 +870,26 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     
     // Calcular el peso total de archivos .mp3 en la carpeta seleccionada
     double totalSizeGB = calcularPesoMP3(new File(RutaDeAcceso));
-
     // Mostrar el peso total en el JTextField
     textFieldMusica.setText(String.format("%.2f GB", totalSizeGB));
     
     // Calcular el peso total de archivos .mp4 en la carpeta seleccionada
     double totalSizeGBmp4 = calcularPesoMP4(new File(RutaDeAcceso));
-
     // Mostrar el peso total en el JTextField
     textFieldVideo.setText(String.format("%.2f GB", totalSizeGBmp4));
+    
+        // Calcular el peso total de archivos de imagen en la carpeta seleccionada
+    double totalSizeGBJPEG = calcularPesoImagenes(new File(RutaDeAcceso));
+    // Mostrar el peso total en el JTextField
+    textFieldFotos.setText(String.format("%.2f GB", totalSizeGBJPEG));
+    
+    
+    //TOTAL DE PESO
+    // Calcular el peso total
+    double totalSizeGBTotal = totalSizeGB + totalSizeGBmp4 + totalSizeGBJPEG;
+    // Mostrar el peso total en el JTextField total
+    textFieldTotal.setText(String.format("%.2f GB", totalSizeGBTotal));
+    
     }//GEN-LAST:event_seleccionCarpetaActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
