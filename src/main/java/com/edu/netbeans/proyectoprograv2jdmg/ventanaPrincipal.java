@@ -55,9 +55,11 @@ import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.exif.ExifIFD0Directory;
+import java.awt.Image;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Josue David Martinez Galdámez
@@ -297,6 +299,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         botonVerImagen.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonVerImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonVerImagen.setEnabled(false);
+        botonVerImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerImagenActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonVerImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 40));
 
         botonSiguienteImagen.setBackground(new java.awt.Color(0, 102, 102));
@@ -1200,6 +1207,38 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
         JOptionPane.showMessageDialog(this, "Por favor, selecciona un video de la lista.");
     }
     }//GEN-LAST:event_botonReproducirVideoActionPerformed
+
+    private void botonVerImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerImagenActionPerformed
+    // Obtener la fila seleccionada
+    int filaSeleccionada = tablaDatosFotos.getSelectedRow();
+    if (filaSeleccionada != -1) { // Verificar si hay una fila seleccionada
+        // Obtener la ruta de la imagen desde la columna correspondiente
+        String rutaImagen = tablaDatosFotos.getValueAt(filaSeleccionada, 2).toString(); // Suponiendo que la ruta está en la columna 3
+        
+        // Crear el ImageIcon
+        ImageIcon imagenOriginal = new ImageIcon(rutaImagen);
+        
+        // Abrir el JFrameFotos
+        JFrameFotos jFrameFotos = new JFrameFotos();
+        
+        // Escalar la imagen al tamaño deseado
+        int ancho = 900; // Puedes establecer un ancho fijo
+        int alto = 668;  // Puedes establecer un alto fijo
+        Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        
+        // Asignar la imagen escalada al JLabel usando el método
+        jFrameFotos.setImageIcon(new ImageIcon(imagenEscalada));
+        
+        // Hacer visible el JFrameFotos
+        jFrameFotos.pack(); // Ajustar el tamaño de la ventana
+        jFrameFotos.setVisible(true);
+        
+        // Cerrar el JFrame actual
+        this.dispose(); // Esto cerrará ventanaPrincipal
+    } else {
+        JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila.");
+    }
+    }//GEN-LAST:event_botonVerImagenActionPerformed
 
 
     
