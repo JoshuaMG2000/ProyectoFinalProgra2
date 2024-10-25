@@ -1209,34 +1209,30 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     }//GEN-LAST:event_botonReproducirVideoActionPerformed
 
     private void botonVerImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerImagenActionPerformed
-    // Obtener la fila seleccionada
+  // Obtener la fila seleccionada
     int filaSeleccionada = tablaDatosFotos.getSelectedRow();
     if (filaSeleccionada != -1) { // Verificar si hay una fila seleccionada
         // Obtener la ruta de la imagen desde la columna correspondiente
-        String rutaImagen = tablaDatosFotos.getValueAt(filaSeleccionada, 2).toString(); // Suponiendo que la ruta está en la columna 3
+        String rutaImagen = tablaDatosFotos.getValueAt(filaSeleccionada, 2).toString(); //Se encuentra en la columna 2 la ruta
         
-        // Crear el ImageIcon
+        // Crear el ImageIcon original
         ImageIcon imagenOriginal = new ImageIcon(rutaImagen);
         
-        // Abrir el JFrameFotos
-        JFrameFotos jFrameFotos = new JFrameFotos();
-        
         // Escalar la imagen al tamaño deseado
-        int ancho = 900; // Puedes establecer un ancho fijo
-        int alto = 668;  // Puedes establecer un alto fijo
+        int ancho = 900; // Ancho fijo
+        int alto = 668;  // Alto fijo
         Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         
-        // Asignar la imagen escalada al JLabel usando el método
-        jFrameFotos.setImageIcon(new ImageIcon(imagenEscalada));
+        // Crear un nuevo ImageIcon a partir de la imagen escalada
+        ImageIcon iconoImagenEscalada = new ImageIcon(imagenEscalada);
         
-        // Hacer visible el JFrameFotos
-        jFrameFotos.pack(); // Ajustar el tamaño de la ventana
-        jFrameFotos.setVisible(true);
-        
-        // Cerrar el JFrame actual
-        this.dispose(); // Esto cerrará ventanaPrincipal
+        // Abrir el JFrameFotos y pasarle la instancia de ventanaPrincipal
+        JFrameFotos ventanaFotos = new JFrameFotos(this); 
+        ventanaFotos.setImageIcon(iconoImagenEscalada); // Configura la imagen escalada en el JLabel
+        ventanaFotos.setVisible(true); // Muestra la ventana de fotos
+        this.setVisible(false); // Oculta la ventana principal
     } else {
-        JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila.");
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila.");
     }
     }//GEN-LAST:event_botonVerImagenActionPerformed
 
