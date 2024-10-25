@@ -4,14 +4,16 @@ package com.edu.netbeans.proyectoprograv2jdmg;
  *
  * @author Josue
  */
-public class ventanaAdministrar extends javax.swing.JFrame {
+public class ventanaDuplicados extends javax.swing.JFrame {
 
     /**
      * Creates new form ventanaAdministrar
      */
-    public ventanaAdministrar() {
-        dispose();
-        ventanaPrincipal Jframe1 = new ventanaPrincipal();
+    private ventanaPrincipal ventanaPrincipal; // Instancia de ventanaPrincipal
+    public ventanaDuplicados(ventanaPrincipal ventanaPrincipal) {
+        this.ventanaPrincipal = ventanaPrincipal; //Guarda la referencia
+        
+        
         initComponents();
         eliminarVideos.setVisible(false);
         eliminarImagenes.setVisible(false);
@@ -28,7 +30,7 @@ public class ventanaAdministrar extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaDuplicados = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cantidadTotal = new javax.swing.JTextField();
@@ -53,7 +55,7 @@ public class ventanaAdministrar extends javax.swing.JFrame {
         eliminarVideos = new javax.swing.JButton();
         eliminarImagenes = new javax.swing.JButton();
         botonDuplicadosVideo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonRegresarDuplicados = new javax.swing.JButton();
         eliminarVideosDuplicados3 = new javax.swing.JButton();
         fondoAdmin = new javax.swing.JLabel();
 
@@ -61,9 +63,9 @@ public class ventanaAdministrar extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(0, 102, 102));
-        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDuplicados.setBackground(new java.awt.Color(0, 102, 102));
+        tablaDuplicados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tablaDuplicados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,9 +76,9 @@ public class ventanaAdministrar extends javax.swing.JFrame {
                 "Nombre", "Extensión", "Tamaño", "Ruta"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(102, 0, 102));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tablaDuplicados.setGridColor(new java.awt.Color(102, 0, 102));
+        tablaDuplicados.setShowGrid(true);
+        jScrollPane1.setViewportView(tablaDuplicados);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 820, 450));
 
@@ -269,16 +271,16 @@ public class ventanaAdministrar extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 290, 380, 190));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 102));
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButton1.setText("REGRESAR");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonRegresarDuplicados.setBackground(new java.awt.Color(0, 153, 102));
+        botonRegresarDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        botonRegresarDuplicados.setText("REGRESAR");
+        botonRegresarDuplicados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonRegresarDuplicados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonRegresarDuplicadosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 100, 30));
+        getContentPane().add(botonRegresarDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 100, 30));
 
         eliminarVideosDuplicados3.setBackground(new java.awt.Color(255, 0, 51));
         eliminarVideosDuplicados3.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -345,49 +347,20 @@ public class ventanaAdministrar extends javax.swing.JFrame {
         eliminarMusica.setEnabled(true);
     }//GEN-LAST:event_botonDuplicadosMusicaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ventanaPrincipal principal = new ventanaPrincipal();
-       principal.setVisible(true);
-       this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaAdministrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaAdministrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaAdministrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaAdministrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new ventanaAdministrar().setVisible(true);
-        });
+    private void botonRegresarDuplicadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarDuplicadosActionPerformed
+    if (ventanaPrincipal.getReproductorActual() != null) {
+        ventanaPrincipal.getReproductorActual().close(); // Detener el reproductor de audio
     }
+         // Cierra el JFrameFotos y se libera de la memoria
+        this.dispose(); 
+        ventanaPrincipal.setVisible(true);
+    }//GEN-LAST:event_botonRegresarDuplicadosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonDuplicadosFotos;
     private javax.swing.JButton botonDuplicadosMusica;
     private javax.swing.JButton botonDuplicadosVideo;
+    private javax.swing.JButton botonRegresarDuplicados;
     private javax.swing.JTextField cantidadImagen1;
     private javax.swing.JTextField cantidadMusica1;
     private javax.swing.JTextField cantidadTotal;
@@ -397,7 +370,6 @@ public class ventanaAdministrar extends javax.swing.JFrame {
     private javax.swing.JButton eliminarVideos;
     private javax.swing.JButton eliminarVideosDuplicados3;
     private javax.swing.JLabel fondoAdmin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -409,7 +381,7 @@ public class ventanaAdministrar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaDuplicados;
     private javax.swing.JTextField textFieldFotos;
     private javax.swing.JTextField textFieldMusica1;
     private javax.swing.JTextField textFieldTotal;
