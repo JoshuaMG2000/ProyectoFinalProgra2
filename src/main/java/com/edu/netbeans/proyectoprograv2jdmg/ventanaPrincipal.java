@@ -62,11 +62,15 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.ImageIcon;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author Josue David Martinez Galdámez
@@ -96,7 +100,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     botonReproducirMusica.setVisible(false);
     botonSiguienteMusica.setVisible(false);
     botonPausa.setVisible(false);
-    botonReproducirVideo.setVisible(false);        
+    botonReproducirVideo.setVisible(false);  
+
     }
 
     public Player getReproductorActual() {
@@ -178,6 +183,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         Archivo = new javax.swing.JMenu();
         seleccionCarpeta = new javax.swing.JMenuItem();
         salir = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        ordenXnombre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("REPRODUCTOR DE MEDIOS");
@@ -640,7 +647,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 verDuplicadosNuevoActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(verDuplicadosNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 400, 150, 30));
+        Panel_Fondo.add(verDuplicadosNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 390, 150, 40));
 
         panelAlmacenamientoDuplicados.setBackground(new java.awt.Color(51, 51, 51));
         panelAlmacenamientoDuplicados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -791,6 +798,18 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(Archivo);
 
+        jMenu1.setText("Ordenar");
+
+        ordenXnombre.setText("Por Nombre A-Z");
+        ordenXnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenXnombreActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ordenXnombre);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -835,7 +854,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Por favor, selecciona primero una carpeta.");
         return;
     }
-
+    //NOTA AGREGAR ESTE MISMO MÉTODO PARA EL JFRAME DE DUPLICADOS,
     // Crear el modelo de tabla y limpiar cualquier dato previo
     DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel(); //obtener el modelo de datos de la Jtable
     modeloTabla.setRowCount(0); // Limpiar datos existentes
@@ -1603,6 +1622,23 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCantidadFotosActionPerformed
 
+    private void ordenXnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenXnombreActionPerformed
+    // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Crear un TableRowSorter para el modelo
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+    
+    // Configurar el sorter en la tabla correspondiente
+    tablaDatosMyV.setRowSorter(sorter);
+    
+    // Establecer el criterio de ordenación en la columna de "Nombre" (índice 0)
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
+    
+    // Ordenar la tabla
+    sorter.sort();
+    }//GEN-LAST:event_ordenXnombreActionPerformed
+
 
     
     
@@ -1648,6 +1684,7 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
@@ -1660,6 +1697,7 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JMenuItem ordenXnombre;
     private javax.swing.JPanel panelAlmacenamiento;
     private javax.swing.JPanel panelAlmacenamientoDuplicados;
     private javax.swing.JPanel panelTablas;
