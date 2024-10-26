@@ -93,14 +93,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     tablaDatosMyV.getTableHeader().setResizingAllowed(false);
     tablaDatosFotos.getTableHeader().setReorderingAllowed(false);
     tablaDatosFotos.getTableHeader().setResizingAllowed(false);
-    botonRegresarImagen.setVisible(false);
     botonVerImagen.setVisible(false);
-    botonSiguienteImagen.setVisible(false);
     botonRegresarMusica.setVisible(false);
     botonReproducirMusica.setVisible(false);
     botonSiguienteMusica.setVisible(false);
     botonPausa.setVisible(false);
     botonReproducirVideo.setVisible(false);  
+    verDuplicadosFotos.setVisible(false);
+    verDuplicadosMyV1.setVisible(false);
 
     }
 
@@ -138,13 +138,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         botonReproducirMusica = new javax.swing.JButton();
         botonSiguienteMusica = new javax.swing.JButton();
         botonPausa = new javax.swing.JButton();
-        botonRegresarImagen = new javax.swing.JButton();
         botonVerImagen = new javax.swing.JButton();
-        botonSiguienteImagen = new javax.swing.JButton();
         botonReproducirVideo = new javax.swing.JButton();
-        botonMusica = new javax.swing.JButton();
-        botonVideo = new javax.swing.JButton();
-        botonFotos = new javax.swing.JButton();
         panelTablas = new javax.swing.JPanel();
         jScrollPaneMyV = new javax.swing.JScrollPane();
         tablaDatosMyV = new javax.swing.JTable();
@@ -161,23 +156,27 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
-        verDuplicadosNuevo = new javax.swing.JButton();
+        verDuplicadosFotos = new javax.swing.JButton();
         panelAlmacenamientoDuplicados = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        cantidadTotal = new javax.swing.JTextField();
-        textFieldVideo1 = new javax.swing.JTextField();
-        textFieldTotal1 = new javax.swing.JTextField();
-        textFieldFotos1 = new javax.swing.JTextField();
+        cantidadTotalDuplicados = new javax.swing.JTextField();
+        tamañoDuplicadosVideo = new javax.swing.JTextField();
+        tamañoTotalDuplicados = new javax.swing.JTextField();
+        tamañoDuplicadosFotos = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        textFieldMusica1 = new javax.swing.JTextField();
-        cantidadMusica1 = new javax.swing.JTextField();
-        cantidadVideo1 = new javax.swing.JTextField();
-        cantidadImagen1 = new javax.swing.JTextField();
+        tamañoDuplicadosMusica = new javax.swing.JTextField();
+        cantidadDuplicadosMusica = new javax.swing.JTextField();
+        cantidadDuplicadosVideo = new javax.swing.JTextField();
+        cantidadDuplicadosFotos = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        botonMusica = new javax.swing.JButton();
+        botonVideo = new javax.swing.JButton();
+        botonFotos = new javax.swing.JButton();
+        verDuplicadosMyV1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
@@ -358,7 +357,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         textFieldTotal2.setForeground(new java.awt.Color(255, 255, 255));
         panelAlmacenamiento.add(textFieldTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 100, -1));
 
-        Panel_Fondo.add(panelAlmacenamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, 230, 370));
+        Panel_Fondo.add(panelAlmacenamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 0, 230, 370));
 
         jPanel2.setBackground(new java.awt.Color(68, 169, 169));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -374,7 +373,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonRegresarMusicaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonRegresarMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 40));
+        jPanel2.add(botonRegresarMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
 
         botonReproducirMusica.setBackground(new java.awt.Color(0, 102, 102));
         botonReproducirMusica.setForeground(new java.awt.Color(255, 255, 255));
@@ -387,7 +386,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonReproducirMusicaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonReproducirMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 50, 40));
+        jPanel2.add(botonReproducirMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 50, 40));
 
         botonSiguienteMusica.setBackground(new java.awt.Color(0, 102, 102));
         botonSiguienteMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/un-paso-adelante.png"))); // NOI18N
@@ -399,7 +398,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonSiguienteMusicaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonSiguienteMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 40, 40));
+        jPanel2.add(botonSiguienteMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 40, 40));
 
         botonPausa.setBackground(new java.awt.Color(0, 102, 102));
         botonPausa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/circulo-de-pausa.png"))); // NOI18N
@@ -411,14 +410,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonPausaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonPausa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 50, 40));
-
-        botonRegresarImagen.setBackground(new java.awt.Color(0, 102, 102));
-        botonRegresarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/angulo-doble-izquierda.png"))); // NOI18N
-        botonRegresarImagen.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonRegresarImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonRegresarImagen.setEnabled(false);
-        jPanel2.add(botonRegresarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 60, 40));
+        jPanel2.add(botonPausa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 40));
 
         botonVerImagen.setBackground(new java.awt.Color(0, 102, 102));
         botonVerImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/verImagen.png"))); // NOI18N
@@ -430,19 +422,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonVerImagenActionPerformed(evt);
             }
         });
-        jPanel2.add(botonVerImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 40));
-
-        botonSiguienteImagen.setBackground(new java.awt.Color(0, 102, 102));
-        botonSiguienteImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/un-paso-adelante.png"))); // NOI18N
-        botonSiguienteImagen.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonSiguienteImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonSiguienteImagen.setEnabled(false);
-        botonSiguienteImagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSiguienteImagenActionPerformed(evt);
-            }
-        });
-        jPanel2.add(botonSiguienteImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 60, 40));
+        jPanel2.add(botonVerImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 60, 40));
 
         botonReproducirVideo.setBackground(new java.awt.Color(0, 51, 51));
         botonReproducirVideo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -456,49 +436,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(botonReproducirVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 60, 40));
 
-        botonMusica.setBackground(new java.awt.Color(0, 102, 102));
-        botonMusica.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        botonMusica.setForeground(new java.awt.Color(255, 255, 255));
-        botonMusica.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\iconos\\musica-alternativa.png")); // NOI18N
-        botonMusica.setText("MUSICA");
-        botonMusica.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonMusica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMusicaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(botonMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 130, -1));
-
-        botonVideo.setBackground(new java.awt.Color(0, 102, 102));
-        botonVideo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        botonVideo.setForeground(new java.awt.Color(255, 255, 255));
-        botonVideo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\iconos\\videocamara.png")); // NOI18N
-        botonVideo.setText("VIDEO");
-        botonVideo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonVideo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonVideo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVideoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(botonVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 130, 40));
-
-        botonFotos.setBackground(new java.awt.Color(0, 102, 102));
-        botonFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        botonFotos.setForeground(new java.awt.Color(255, 255, 255));
-        botonFotos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\iconos\\FOTOS.png")); // NOI18N
-        botonFotos.setText("FOTOS");
-        botonFotos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonFotos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonFotos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonFotosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(botonFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 130, 40));
-
-        Panel_Fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 1080, 40));
+        Panel_Fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, 1060, 40));
 
         panelTablas.setBackground(new java.awt.Color(0, 102, 102));
         panelTablas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -522,7 +460,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true, true
+                false, false, true, true, true, true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -536,11 +474,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         tablaDatosMyV.setShowGrid(true);
         jScrollPaneMyV.setViewportView(tablaDatosMyV);
         if (tablaDatosMyV.getColumnModel().getColumnCount() > 0) {
-            tablaDatosMyV.getColumnModel().getColumn(0).setMinWidth(400);
+            tablaDatosMyV.getColumnModel().getColumn(0).setMinWidth(300);
             tablaDatosMyV.getColumnModel().getColumn(0).setMaxWidth(400);
+            tablaDatosMyV.getColumnModel().getColumn(7).setMinWidth(200);
+            tablaDatosMyV.getColumnModel().getColumn(7).setMaxWidth(300);
         }
 
-        panelTablas.add(jScrollPaneMyV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 270));
+        panelTablas.add(jScrollPaneMyV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 260));
 
         jScrollPaneFotos.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -564,9 +504,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         tablaDatosFotos.setShowGrid(true);
         jScrollPaneFotos.setViewportView(tablaDatosFotos);
 
-        panelTablas.add(jScrollPaneFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 270));
+        panelTablas.add(jScrollPaneFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 260));
 
-        Panel_Fondo.add(panelTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 1080, 290));
+        Panel_Fondo.add(panelTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 1060, 240));
 
         jTextPane1.setBackground(new java.awt.Color(0, 102, 102));
         jTextPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -582,7 +522,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REPRODUCTOR MULTIMEDIA JOSH");
-        Panel_Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 670, -1));
+        Panel_Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 670, -1));
 
         botonVerDuplicados.setBackground(new java.awt.Color(51, 51, 51));
         botonVerDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -590,15 +530,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         botonVerDuplicados.setText("VER DUPLICADOS");
         botonVerDuplicados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonVerDuplicados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonVerDuplicados.setEnabled(false);
         botonVerDuplicados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerDuplicadosActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(botonVerDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 90, 30));
+        Panel_Fondo.add(botonVerDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 10, 40, 30));
 
         jProgressBar1.setBackground(new java.awt.Color(0, 0, 204));
-        Panel_Fondo.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, 1080, 10));
+        Panel_Fondo.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 1060, 10));
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField1.setText("Ingresa tu búsqueda aquí");
@@ -607,19 +548,19 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 410, -1));
+        Panel_Fondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 260, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButton1.setText("+ PLAYLIST");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Panel_Fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 80, 30));
+        Panel_Fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 80, 30));
 
         jButton2.setBackground(new java.awt.Color(102, 0, 51));
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButton2.setText("OK");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Panel_Fondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 70, 30));
+        Panel_Fondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 70, 30));
 
         jList2.setBackground(new java.awt.Color(0, 51, 51));
         jList2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -630,24 +571,24 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList2);
 
-        Panel_Fondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 200));
+        Panel_Fondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 200));
 
         jButton3.setBackground(new java.awt.Color(0, 102, 102));
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButton3.setText("VER MÁS PESADOS");
+        jButton3.setText("MÁS PESADOS");
         jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Panel_Fondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, -1, 30));
+        Panel_Fondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 290, 110, 40));
 
-        verDuplicadosNuevo.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
-        verDuplicadosNuevo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        verDuplicadosNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        verDuplicadosNuevo.setText("VER DUPLICADOS");
-        verDuplicadosNuevo.addActionListener(new java.awt.event.ActionListener() {
+        verDuplicadosFotos.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        verDuplicadosFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        verDuplicadosFotos.setForeground(new java.awt.Color(255, 255, 255));
+        verDuplicadosFotos.setText("DUPLICADOS");
+        verDuplicadosFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verDuplicadosNuevoActionPerformed(evt);
+                verDuplicadosFotosActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(verDuplicadosNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 390, 150, 40));
+        Panel_Fondo.add(verDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 270, 130, 40));
 
         panelAlmacenamientoDuplicados.setBackground(new java.awt.Color(51, 51, 51));
         panelAlmacenamientoDuplicados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -661,36 +602,36 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel9.setText("Fotos:");
         panelAlmacenamientoDuplicados.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
 
-        cantidadTotal.setEditable(false);
-        cantidadTotal.setBackground(new java.awt.Color(0, 0, 0));
-        cantidadTotal.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        cantidadTotal.setForeground(new java.awt.Color(255, 255, 255));
-        cantidadTotal.addActionListener(new java.awt.event.ActionListener() {
+        cantidadTotalDuplicados.setEditable(false);
+        cantidadTotalDuplicados.setBackground(new java.awt.Color(0, 0, 0));
+        cantidadTotalDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        cantidadTotalDuplicados.setForeground(new java.awt.Color(255, 255, 255));
+        cantidadTotalDuplicados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadTotalActionPerformed(evt);
+                cantidadTotalDuplicadosActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, 30));
+        panelAlmacenamientoDuplicados.add(cantidadTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 60, 30));
 
-        textFieldVideo1.setEditable(false);
-        textFieldVideo1.setBackground(new java.awt.Color(0, 0, 0));
-        textFieldVideo1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        panelAlmacenamientoDuplicados.add(textFieldVideo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, 30));
+        tamañoDuplicadosVideo.setEditable(false);
+        tamañoDuplicadosVideo.setBackground(new java.awt.Color(0, 0, 0));
+        tamañoDuplicadosVideo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        panelAlmacenamientoDuplicados.add(tamañoDuplicadosVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, 30));
 
-        textFieldTotal1.setEditable(false);
-        textFieldTotal1.setBackground(new java.awt.Color(0, 0, 0));
-        textFieldTotal1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        panelAlmacenamientoDuplicados.add(textFieldTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 70, 30));
+        tamañoTotalDuplicados.setEditable(false);
+        tamañoTotalDuplicados.setBackground(new java.awt.Color(0, 0, 0));
+        tamañoTotalDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        panelAlmacenamientoDuplicados.add(tamañoTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 70, 30));
 
-        textFieldFotos1.setEditable(false);
-        textFieldFotos1.setBackground(new java.awt.Color(0, 0, 0));
-        textFieldFotos1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        textFieldFotos1.addActionListener(new java.awt.event.ActionListener() {
+        tamañoDuplicadosFotos.setEditable(false);
+        tamañoDuplicadosFotos.setBackground(new java.awt.Color(0, 0, 0));
+        tamañoDuplicadosFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        tamañoDuplicadosFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldFotos1ActionPerformed(evt);
+                tamañoDuplicadosFotosActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(textFieldFotos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 70, 30));
+        panelAlmacenamientoDuplicados.add(tamañoDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 70, 30));
 
         jLabel10.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -701,7 +642,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Totales:");
-        panelAlmacenamientoDuplicados.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 90, 30));
+        panelAlmacenamientoDuplicados.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 90, 30));
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -720,58 +661,112 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel14.setText("TAMAÑO");
         panelAlmacenamientoDuplicados.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 70, 20));
 
-        textFieldMusica1.setEditable(false);
-        textFieldMusica1.setBackground(new java.awt.Color(0, 0, 0));
-        textFieldMusica1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        textFieldMusica1.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldMusica1.addActionListener(new java.awt.event.ActionListener() {
+        tamañoDuplicadosMusica.setEditable(false);
+        tamañoDuplicadosMusica.setBackground(new java.awt.Color(0, 0, 0));
+        tamañoDuplicadosMusica.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        tamañoDuplicadosMusica.setForeground(new java.awt.Color(255, 255, 255));
+        tamañoDuplicadosMusica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldMusica1ActionPerformed(evt);
+                tamañoDuplicadosMusicaActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(textFieldMusica1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 70, 30));
+        panelAlmacenamientoDuplicados.add(tamañoDuplicadosMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 70, 30));
 
-        cantidadMusica1.setEditable(false);
-        cantidadMusica1.setBackground(new java.awt.Color(0, 0, 0));
-        cantidadMusica1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        cantidadMusica1.setForeground(new java.awt.Color(255, 255, 255));
-        cantidadMusica1.addActionListener(new java.awt.event.ActionListener() {
+        cantidadDuplicadosMusica.setEditable(false);
+        cantidadDuplicadosMusica.setBackground(new java.awt.Color(0, 0, 0));
+        cantidadDuplicadosMusica.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        cantidadDuplicadosMusica.setForeground(new java.awt.Color(255, 255, 255));
+        cantidadDuplicadosMusica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadMusica1ActionPerformed(evt);
+                cantidadDuplicadosMusicaActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadMusica1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 60, 30));
+        panelAlmacenamientoDuplicados.add(cantidadDuplicadosMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 60, 30));
 
-        cantidadVideo1.setEditable(false);
-        cantidadVideo1.setBackground(new java.awt.Color(0, 0, 0));
-        cantidadVideo1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        cantidadVideo1.setForeground(new java.awt.Color(255, 255, 255));
-        cantidadVideo1.addActionListener(new java.awt.event.ActionListener() {
+        cantidadDuplicadosVideo.setEditable(false);
+        cantidadDuplicadosVideo.setBackground(new java.awt.Color(0, 0, 0));
+        cantidadDuplicadosVideo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        cantidadDuplicadosVideo.setForeground(new java.awt.Color(255, 255, 255));
+        cantidadDuplicadosVideo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadVideo1ActionPerformed(evt);
+                cantidadDuplicadosVideoActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadVideo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 60, 30));
+        panelAlmacenamientoDuplicados.add(cantidadDuplicadosVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 60, 30));
 
-        cantidadImagen1.setEditable(false);
-        cantidadImagen1.setBackground(new java.awt.Color(0, 0, 0));
-        cantidadImagen1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        cantidadImagen1.setForeground(new java.awt.Color(255, 255, 255));
-        cantidadImagen1.addActionListener(new java.awt.event.ActionListener() {
+        cantidadDuplicadosFotos.setEditable(false);
+        cantidadDuplicadosFotos.setBackground(new java.awt.Color(0, 0, 0));
+        cantidadDuplicadosFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        cantidadDuplicadosFotos.setForeground(new java.awt.Color(255, 255, 255));
+        cantidadDuplicadosFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadImagen1ActionPerformed(evt);
+                cantidadDuplicadosFotosActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadImagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 60, 30));
+        panelAlmacenamientoDuplicados.add(cantidadDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 60, 30));
 
         jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(204, 0, 102));
         jLabel15.setText("ALMACENAMIENTO DUPLICADOS");
-        panelAlmacenamientoDuplicados.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        panelAlmacenamientoDuplicados.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        Panel_Fondo.add(panelAlmacenamientoDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 440, 230, 230));
+        Panel_Fondo.add(panelAlmacenamientoDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 380, 230, 240));
+
+        botonMusica.setBackground(new java.awt.Color(0, 102, 102));
+        botonMusica.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        botonMusica.setForeground(new java.awt.Color(255, 255, 255));
+        botonMusica.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\iconos\\musica-alternativa.png")); // NOI18N
+        botonMusica.setText("MUSICA");
+        botonMusica.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonMusica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMusicaActionPerformed(evt);
+            }
+        });
+        Panel_Fondo.add(botonMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 40));
+
+        botonVideo.setBackground(new java.awt.Color(0, 102, 102));
+        botonVideo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        botonVideo.setForeground(new java.awt.Color(255, 255, 255));
+        botonVideo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\iconos\\videocamara.png")); // NOI18N
+        botonVideo.setText("VIDEO");
+        botonVideo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonVideo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonVideo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVideoActionPerformed(evt);
+            }
+        });
+        Panel_Fondo.add(botonVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 130, 40));
+
+        botonFotos.setBackground(new java.awt.Color(0, 102, 102));
+        botonFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        botonFotos.setForeground(new java.awt.Color(255, 255, 255));
+        botonFotos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\iconos\\FOTOS.png")); // NOI18N
+        botonFotos.setText("FOTOS");
+        botonFotos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonFotos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonFotos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFotosActionPerformed(evt);
+            }
+        });
+        Panel_Fondo.add(botonFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 130, 40));
+
+        verDuplicadosMyV1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        verDuplicadosMyV1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        verDuplicadosMyV1.setForeground(new java.awt.Color(255, 255, 255));
+        verDuplicadosMyV1.setText("DUPLICADOS");
+        verDuplicadosMyV1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verDuplicadosMyV1ActionPerformed(evt);
+            }
+        });
+        Panel_Fondo.add(verDuplicadosMyV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 290, 130, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\fondos\\paletota.jpg")); // NOI18N
+        jLabel3.setEnabled(false);
         jLabel3.setInheritsPopupMenu(false);
         Panel_Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -520, 1830, 1640));
 
@@ -816,7 +811,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMusicaActionPerformed
-
+        verDuplicadosFotos.setVisible(false);
+        verDuplicadosMyV1.setVisible(true);
+        
        //TABLA FOTOS - OCULTAR
        jScrollPaneFotos.setVisible(false);
        tablaDatosFotos.setVisible(false);
@@ -838,11 +835,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
        
        //BOTONES FOTOS - OCULTAR E INACTIVAR
        botonVerImagen.setVisible(false);
-       botonRegresarImagen.setVisible(false);
-       botonSiguienteImagen.setVisible(false);
        botonVerImagen.setEnabled(false);
-       botonRegresarImagen.setEnabled(false);
-       botonSiguienteImagen.setEnabled(false);
                
        //BOTON VIDEO - OCULTAR E INACTIVAR
        botonReproducirVideo.setVisible(false);
@@ -1325,7 +1318,8 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     }//GEN-LAST:event_Panel_FondoComponentShown
 
     private void botonFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFotosActionPerformed
-       
+        verDuplicadosFotos.setVisible(true);
+        verDuplicadosMyV1.setVisible(false);
     // Verificar si el reproductor actual no es null y está en uso antes de cerrarlo
     if (reproductorActual != null) {
         reproductorActual.close(); // Detiene el reproductor si está activo
@@ -1352,11 +1346,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
        botonSiguienteMusica.setVisible(false);
        botonPausa.setVisible(false);
        botonVerImagen.setVisible(true);
-       botonRegresarImagen.setVisible(true);
-       botonSiguienteImagen.setVisible(true);
        botonVerImagen.setEnabled(true);
-       botonRegresarImagen.setEnabled(true);
-       botonSiguienteImagen.setEnabled(true);
        botonReproducirVideo.setVisible(false);
        botonReproducirVideo.setEnabled(false);
        
@@ -1382,7 +1372,9 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     }//GEN-LAST:event_botonVerDuplicadosActionPerformed
 
     private void botonVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVideoActionPerformed
-  // Cerrar el reproductor actual antes de cambiar a la sección de video
+        verDuplicadosFotos.setVisible(false);
+        verDuplicadosMyV1.setVisible(true);
+// Cerrar el reproductor actual antes de cambiar a la sección de video
     if (reproductorActual != null) {
         reproductorActual.close(); 
     }
@@ -1410,8 +1402,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     // Ocultar botones de fotos
     botonPausa.setVisible(false);          
     botonVerImagen.setVisible(false);      
-    botonRegresarImagen.setVisible(false); 
-    botonSiguienteImagen.setVisible(false); 
+
     
     // Mostrar y habilitar el botón de reproducir video
     botonReproducirVideo.setVisible(true); 
@@ -1452,10 +1443,6 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
         JOptionPane.showMessageDialog(this, "No hay canción reproduciéndose.");
     }
     }//GEN-LAST:event_botonPausaActionPerformed
-
-    private void botonSiguienteImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteImagenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonSiguienteImagenActionPerformed
 
     private void textFieldCantidadVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCantidadVideoActionPerformed
         // TODO add your handling code here:
@@ -1506,16 +1493,21 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
 
 
 private String obtenerNombreBase(String nombreArchivo) {
-    // Expresión regular para detectar "(n)", "- copia", "- Copy" o similares al final del nombre
-    String regex = "^(.*?)(\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?\\s*(\\.mp3|\\.mp4)?$";
-    /*Explicación detallada de la expresión regular
-                                              ^(.*?):   Captura el nombre principal del archivo, de forma no codiciosa (.*?), sin incluir ningún sufijo o extensión.
-      (\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?:   Esta es la parte que captura y omite los sufijos.
-                                                \\s*:   Permite un espacio opcional antes del sufijo.
-                                        (\\(\\d+\\)):   Detecta números entre paréntesis, como (1), (2), etc.
-                      |-\\s*[Cc]opia y |-\\s*[Cc]opy:   Detecta sufijos - copia o - Copy, sin distinguir mayúsculas o minúsculas en la palabra.
-                                          (\\.mp3)?$:   Detecta la extensión .mp3 al final, si está presente.
-    Al usar matcher.group(1).trim(), el método extrae el nombre principal del archivo sin sufijos ni extensión .mp3. Si no hay coincidencia, devuelve el nombre original.*/
+    // Expresión regular para detectar "(n)", "- copia", "- Copy" o similares al final del nombre, y extensiones .mp3, .mp4, .jpg, y .png
+    String regex = "^(.*?)(\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?\\s*(\\.mp3|\\.mp4|\\.jpg|\\.png)?$";
+    
+    /* Explicación detallada de la expresión regular:
+       ^(.*?):         Captura el nombre principal del archivo de forma no codiciosa (.*?), sin incluir ningún sufijo o extensión.
+       (\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?:   Esta es la parte que captura y omite los sufijos:
+                         \\s*:       Permite un espacio opcional antes del sufijo.
+                         (\\(\\d+\\)):   Detecta números entre paréntesis, como (1), (2), etc.
+                         |-\\s*[Cc]opia y |-\\s*[Cc]opy:   Detecta sufijos "- copia" o "- Copy", sin distinguir mayúsculas o minúsculas en la palabra.
+       (\\.mp3|\\.mp4|\\.jpg|\\.png)?$:   Detecta extensiones al final del nombre (.mp3, .mp4, .jpg, .png) si están presentes.
+       
+       Al usar matcher.group(1).trim(), el método extrae el nombre principal del archivo sin sufijos ni extensiones.
+       Si no hay coincidencia, el método devuelve el nombre original del archivo.
+    */
+    
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(nombreArchivo);
     
@@ -1565,9 +1557,9 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
 }
     
     
-    private void verDuplicadosNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDuplicadosNuevoActionPerformed
+    private void verDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDuplicadosFotosActionPerformed
          // Obtener el modelo de la tabla
-    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosFotos.getModel();
     
     // Buscar filas duplicadas
     List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
@@ -1584,31 +1576,31 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     if (filasDuplicadas.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
     }
-    }//GEN-LAST:event_verDuplicadosNuevoActionPerformed
+    }//GEN-LAST:event_verDuplicadosFotosActionPerformed
 
-    private void cantidadTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadTotalActionPerformed
+    private void cantidadTotalDuplicadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadTotalDuplicadosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadTotalActionPerformed
+    }//GEN-LAST:event_cantidadTotalDuplicadosActionPerformed
 
-    private void textFieldFotos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldFotos1ActionPerformed
+    private void tamañoDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamañoDuplicadosFotosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldFotos1ActionPerformed
+    }//GEN-LAST:event_tamañoDuplicadosFotosActionPerformed
 
-    private void textFieldMusica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMusica1ActionPerformed
+    private void tamañoDuplicadosMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamañoDuplicadosMusicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldMusica1ActionPerformed
+    }//GEN-LAST:event_tamañoDuplicadosMusicaActionPerformed
 
-    private void cantidadMusica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadMusica1ActionPerformed
+    private void cantidadDuplicadosMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadDuplicadosMusicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadMusica1ActionPerformed
+    }//GEN-LAST:event_cantidadDuplicadosMusicaActionPerformed
 
-    private void cantidadVideo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadVideo1ActionPerformed
+    private void cantidadDuplicadosVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadDuplicadosVideoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadVideo1ActionPerformed
+    }//GEN-LAST:event_cantidadDuplicadosVideoActionPerformed
 
-    private void cantidadImagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadImagen1ActionPerformed
+    private void cantidadDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadDuplicadosFotosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadImagen1ActionPerformed
+    }//GEN-LAST:event_cantidadDuplicadosFotosActionPerformed
 
     private void textFieldMusica2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMusica2ActionPerformed
         // TODO add your handling code here:
@@ -1639,6 +1631,27 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     sorter.sort();
     }//GEN-LAST:event_ordenXnombreActionPerformed
 
+    private void verDuplicadosMyV1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDuplicadosMyV1ActionPerformed
+              // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Buscar filas duplicadas
+    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
+    
+    // Limpiar la tabla actual
+    modeloTabla.setRowCount(0);
+    
+    // Agregar las filas duplicadas nuevamente a la tabla
+    for (Object[] fila : filasDuplicadas) {
+        modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
+    }
+    
+    // Mostrar mensaje si no hay duplicados
+    if (filasDuplicadas.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
+    }
+    }//GEN-LAST:event_verDuplicadosMyV1ActionPerformed
+
 
     
     
@@ -1649,19 +1662,17 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     private javax.swing.JButton botonFotos;
     private javax.swing.JButton botonMusica;
     private javax.swing.JButton botonPausa;
-    private javax.swing.JButton botonRegresarImagen;
     private javax.swing.JButton botonRegresarMusica;
     private javax.swing.JButton botonReproducirMusica;
     private javax.swing.JButton botonReproducirVideo;
-    private javax.swing.JButton botonSiguienteImagen;
     private javax.swing.JButton botonSiguienteMusica;
     private javax.swing.JButton botonVerDuplicados;
     private javax.swing.JButton botonVerImagen;
     private javax.swing.JButton botonVideo;
-    private javax.swing.JTextField cantidadImagen1;
-    private javax.swing.JTextField cantidadMusica1;
-    private javax.swing.JTextField cantidadTotal;
-    private javax.swing.JTextField cantidadVideo1;
+    private javax.swing.JTextField cantidadDuplicadosFotos;
+    private javax.swing.JTextField cantidadDuplicadosMusica;
+    private javax.swing.JTextField cantidadDuplicadosVideo;
+    private javax.swing.JTextField cantidadTotalDuplicados;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1705,19 +1716,20 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     private javax.swing.JMenuItem seleccionCarpeta;
     private javax.swing.JTable tablaDatosFotos;
     private javax.swing.JTable tablaDatosMyV;
+    private javax.swing.JTextField tamañoDuplicadosFotos;
+    private javax.swing.JTextField tamañoDuplicadosMusica;
+    private javax.swing.JTextField tamañoDuplicadosVideo;
+    private javax.swing.JTextField tamañoTotalDuplicados;
     private javax.swing.JTextField textFieldCantidadFotos;
     private javax.swing.JTextField textFieldCantidadMusica;
     private javax.swing.JTextField textFieldCantidadVideo;
     private javax.swing.JTextField textFieldFotos;
-    private javax.swing.JTextField textFieldFotos1;
-    private javax.swing.JTextField textFieldMusica1;
     private javax.swing.JTextField textFieldMusica2;
     private javax.swing.JTextField textFieldTotal;
-    private javax.swing.JTextField textFieldTotal1;
     private javax.swing.JTextField textFieldTotal2;
-    private javax.swing.JTextField textFieldVideo1;
     private javax.swing.JTextField textFieldVideo2;
-    private javax.swing.JButton verDuplicadosNuevo;
+    private javax.swing.JButton verDuplicadosFotos;
+    private javax.swing.JButton verDuplicadosMyV1;
     // End of variables declaration//GEN-END:variables
 
 

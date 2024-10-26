@@ -29,15 +29,19 @@ public class JFrameFotos extends javax.swing.JFrame {
 
         labelParaFotos.setBackground(new java.awt.Color(204, 204, 204));
         labelParaFotos.setOpaque(true);
-        getContentPane().add(labelParaFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 21, 900, 490));
+        getContentPane().add(labelParaFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 21, 1020, 560));
 
+        botonRegresarFotos.setBackground(new java.awt.Color(0, 51, 51));
+        botonRegresarFotos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonRegresarFotos.setForeground(new java.awt.Color(255, 255, 0));
         botonRegresarFotos.setText("regresar");
+        botonRegresarFotos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonRegresarFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegresarFotosActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegresarFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 430, 150, 80));
+        getContentPane().add(botonRegresarFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 530, 120, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
