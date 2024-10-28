@@ -68,6 +68,7 @@ import java.util.Set;
 import javax.swing.ImageIcon;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import javax.swing.JTextField;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
@@ -100,7 +101,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     botonPausa.setVisible(false);
     botonReproducirVideo.setVisible(false);  
     verDuplicadosFotos.setVisible(false);
-    verDuplicadosMyV1.setVisible(false);
+    verDuplicadosMyV.setVisible(false);
 
     }
 
@@ -176,7 +177,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         botonMusica = new javax.swing.JButton();
         botonVideo = new javax.swing.JButton();
         botonFotos = new javax.swing.JButton();
-        verDuplicadosMyV1 = new javax.swing.JButton();
+        verDuplicadosMyV = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
@@ -184,6 +185,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         salir = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         ordenXnombre = new javax.swing.JMenuItem();
+        ordenarXartista = new javax.swing.JMenuItem();
+        ordenarXalbum = new javax.swing.JMenuItem();
+        ordenarXgenero = new javax.swing.JMenuItem();
+        ordenarXduracion = new javax.swing.JMenuItem();
+        ordenarXaño = new javax.swing.JMenuItem();
+        ordenarXtamaño = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("REPRODUCTOR DE MEDIOS");
@@ -436,7 +443,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(botonReproducirVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 60, 40));
 
-        Panel_Fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, 1060, 40));
+        Panel_Fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 1060, 40));
 
         panelTablas.setBackground(new java.awt.Color(0, 102, 102));
         panelTablas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -480,7 +487,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             tablaDatosMyV.getColumnModel().getColumn(7).setMaxWidth(300);
         }
 
-        panelTablas.add(jScrollPaneMyV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 260));
+        panelTablas.add(jScrollPaneMyV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 220));
 
         jScrollPaneFotos.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -504,9 +511,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         tablaDatosFotos.setShowGrid(true);
         jScrollPaneFotos.setViewportView(tablaDatosFotos);
 
-        panelTablas.add(jScrollPaneFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 260));
+        panelTablas.add(jScrollPaneFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 220));
 
-        Panel_Fondo.add(panelTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 1060, 240));
+        Panel_Fondo.add(panelTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 1060, 240));
 
         jTextPane1.setBackground(new java.awt.Color(0, 102, 102));
         jTextPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -516,7 +523,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jTextPane1.setText("ACÁ IRA LA LETRA DE LAS CANCIONES");
         jScrollPane3.setViewportView(jTextPane1);
 
-        Panel_Fondo.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 860, 200));
+        Panel_Fondo.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 840, 30));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 32)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -539,7 +546,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         Panel_Fondo.add(botonVerDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 10, 40, 30));
 
         jProgressBar1.setBackground(new java.awt.Color(0, 0, 204));
-        Panel_Fondo.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 1060, 10));
+        Panel_Fondo.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 1060, 10));
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField1.setText("Ingresa tu búsqueda aquí");
@@ -548,7 +555,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 260, 30));
+        Panel_Fondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 260, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -588,7 +595,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 verDuplicadosFotosActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(verDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 270, 130, 40));
+        Panel_Fondo.add(verDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 250, 130, 40));
 
         panelAlmacenamientoDuplicados.setBackground(new java.awt.Color(51, 51, 51));
         panelAlmacenamientoDuplicados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -754,19 +761,18 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         Panel_Fondo.add(botonFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 130, 40));
 
-        verDuplicadosMyV1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
-        verDuplicadosMyV1.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        verDuplicadosMyV1.setForeground(new java.awt.Color(255, 255, 255));
-        verDuplicadosMyV1.setText("DUPLICADOS");
-        verDuplicadosMyV1.addActionListener(new java.awt.event.ActionListener() {
+        verDuplicadosMyV.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        verDuplicadosMyV.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        verDuplicadosMyV.setForeground(new java.awt.Color(255, 255, 255));
+        verDuplicadosMyV.setText("DUPLICADOS");
+        verDuplicadosMyV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verDuplicadosMyV1ActionPerformed(evt);
+                verDuplicadosMyVActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(verDuplicadosMyV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 290, 130, 40));
+        Panel_Fondo.add(verDuplicadosMyV, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 300, 130, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\fondos\\paletota.jpg")); // NOI18N
-        jLabel3.setEnabled(false);
         jLabel3.setInheritsPopupMenu(false);
         Panel_Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -520, 1830, 1640));
 
@@ -803,6 +809,54 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(ordenXnombre);
 
+        ordenarXartista.setText("Por Artista A-Z");
+        ordenarXartista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarXartistaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ordenarXartista);
+
+        ordenarXalbum.setText("Por Álbum A-Z");
+        ordenarXalbum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarXalbumActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ordenarXalbum);
+
+        ordenarXgenero.setText("Por Género A-Z");
+        ordenarXgenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarXgeneroActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ordenarXgenero);
+
+        ordenarXduracion.setText("Por Duración A-Z");
+        ordenarXduracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarXduracionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ordenarXduracion);
+
+        ordenarXaño.setText("Por Año A-Z");
+        ordenarXaño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarXañoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ordenarXaño);
+
+        ordenarXtamaño.setText("Por Tamaño A-Z");
+        ordenarXtamaño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarXtamañoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ordenarXtamaño);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -812,7 +866,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     private void botonMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMusicaActionPerformed
         verDuplicadosFotos.setVisible(false);
-        verDuplicadosMyV1.setVisible(true);
+        verDuplicadosMyV.setVisible(true);
+        verDuplicadosMyV.setEnabled(true);
         
        //TABLA FOTOS - OCULTAR
        jScrollPaneFotos.setVisible(false);
@@ -847,7 +902,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Por favor, selecciona primero una carpeta.");
         return;
     }
-    //NOTA AGREGAR ESTE MISMO MÉTODO PARA EL JFRAME DE DUPLICADOS,
+    
     // Crear el modelo de tabla y limpiar cualquier dato previo
     DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel(); //obtener el modelo de datos de la Jtable
     modeloTabla.setRowCount(0); // Limpiar datos existentes
@@ -951,6 +1006,8 @@ private void buscarArchivosMP3(File directorio, DefaultTableModel modeloTabla) {
                     String genero = tag != null ? tag.getFirst(FieldKey.GENRE) : "Desconocido";
                     String duracion = audioFile.getAudioHeader().getTrackLength() + " segundos";
                     String año = tag != null ? tag.getFirst(FieldKey.YEAR) : "Desconocido";
+                    
+                    double tamañoMB= archivo.length()/(1024.0*1024.0);
 
                     // Crear una fila de datos para agregarla al modelo de tabla
                     Object[] fila = {
@@ -962,7 +1019,7 @@ private void buscarArchivosMP3(File directorio, DefaultTableModel modeloTabla) {
                         duracion,           // Duración en segundos
                         año,                // Año de publicación
                         archivo.getAbsolutePath(),  // Ruta completa del archivo
-                        archivo.length()    // Tamaño del archivo en bytes
+                        String.format("%.2f MB", tamañoMB)    // Tamaño del archivo en MB
                     };
 
                     // Agregar la fila al modelo de la tabla
@@ -1319,7 +1376,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
 
     private void botonFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFotosActionPerformed
         verDuplicadosFotos.setVisible(true);
-        verDuplicadosMyV1.setVisible(false);
+        verDuplicadosMyV.setVisible(false);
     // Verificar si el reproductor actual no es null y está en uso antes de cerrarlo
     if (reproductorActual != null) {
         reproductorActual.close(); // Detiene el reproductor si está activo
@@ -1373,7 +1430,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
 
     private void botonVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVideoActionPerformed
         verDuplicadosFotos.setVisible(false);
-        verDuplicadosMyV1.setVisible(true);
+        verDuplicadosMyV.setVisible(true);
 // Cerrar el reproductor actual antes de cambiar a la sección de video
     if (reproductorActual != null) {
         reproductorActual.close(); 
@@ -1520,17 +1577,24 @@ private String obtenerNombreBase(String nombreArchivo) {
 }
 
 // Método modificado para buscar duplicados usando el nombre base
-private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
+private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla, 
+                                        JTextField tamañoDuplicadosMusica, 
+                                        JTextField cantidadDuplicadosMusica, 
+                                        JTextField tamañoDuplicadosVideo, 
+                                        JTextField cantidadDuplicadosVideo) {
     List<Object[]> duplicados = new ArrayList<>();
     Set<String> nombresEncontrados = new HashSet<>();
     Set<String> nombresDuplicados = new HashSet<>();
+    
+    double totalSizeMp3 = 0.0;
+    int countMp3 = 0;
+    double totalSizeMp4 = 0.0;
+    int countMp4 = 0;
 
+    // Primera pasada: identificar nombres duplicados sin paréntesis o sufijos
     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
         String nombreArchivoOriginal = modeloTabla.getValueAt(i, 0).toString();
-        String nombreArchivo = obtenerNombreBase(nombreArchivoOriginal); // Obtener nombre base
-        
-        // Agregar mensajes para depurar y verificar
-        //System.out.println("Nombre original: " + nombreArchivoOriginal + " | Nombre base: " + nombreArchivo);
+        String nombreArchivo = obtenerNombreBase(nombreArchivoOriginal);
 
         if (nombresEncontrados.contains(nombreArchivo)) {
             nombresDuplicados.add(nombreArchivo);
@@ -1539,39 +1603,64 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
         }
     }
 
-    // Agregar las filas duplicadas a la lista
+    // Segunda pasada: agregar filas duplicadas y calcular tamaños para mp3 y mp4
     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
         String nombreArchivoOriginal = modeloTabla.getValueAt(i, 0).toString();
         String nombreArchivo = obtenerNombreBase(nombreArchivoOriginal);
-
+        String extension = obtenerExtension(nombreArchivoOriginal); // Método que devuelve la extensión del archivo
+        
         if (nombresDuplicados.contains(nombreArchivo)) {
             Object[] fila = new Object[modeloTabla.getColumnCount()];
             for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
                 fila[j] = modeloTabla.getValueAt(i, j);
             }
             duplicados.add(fila);
+            
+            // Dependiendo de la extensión, suma al total correspondiente
+            double tamañoArchivo = Double.parseDouble(modeloTabla.getValueAt(i, modeloTabla.findColumn("Tamaño")).toString());
+            if (".mp3".equalsIgnoreCase(extension)) {
+                totalSizeMp3 += tamañoArchivo;
+                countMp3++;
+            } else if (".mp4".equalsIgnoreCase(extension)) {
+                totalSizeMp4 += tamañoArchivo;
+                countMp4++;
+            }
         }
     }
 
+    // Mostrar tamaño y cantidad de duplicados en los JTextFields respectivos
+    tamañoDuplicadosMusica.setText(String.format("%.2f MB", totalSizeMp3));
+    cantidadDuplicadosMusica.setText(String.valueOf(countMp3));
+    tamañoDuplicadosVideo.setText(String.format("%.2f MB", totalSizeMp4));
+    cantidadDuplicadosVideo.setText(String.valueOf(countMp4));
+
     return duplicados;
+}
+
+// Método auxiliar para obtener la extensión del archivo
+private String obtenerExtension(String nombreArchivo) {
+    int lastDotIndex = nombreArchivo.lastIndexOf(".");
+    return (lastDotIndex != -1) ? nombreArchivo.substring(lastDotIndex).toLowerCase() : "";
 }
     
     
     private void verDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDuplicadosFotosActionPerformed
-         // Obtener el modelo de la tabla
+ // Obtener el modelo de la tabla
     DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosFotos.getModel();
-    
-    // Buscar filas duplicadas
-    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
-    
+
+    // Buscar filas duplicadas y actualizar JTextField
+    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla, tamañoDuplicadosMusica, 
+                                                      cantidadDuplicadosMusica, tamañoDuplicadosVideo, 
+                                                      cantidadDuplicadosVideo);
+
     // Limpiar la tabla actual
     modeloTabla.setRowCount(0);
-    
+
     // Agregar las filas duplicadas nuevamente a la tabla
     for (Object[] fila : filasDuplicadas) {
         modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
     }
-    
+
     // Mostrar mensaje si no hay duplicados
     if (filasDuplicadas.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
@@ -1631,26 +1720,130 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     sorter.sort();
     }//GEN-LAST:event_ordenXnombreActionPerformed
 
-    private void verDuplicadosMyV1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDuplicadosMyV1ActionPerformed
-              // Obtener el modelo de la tabla
+    private void verDuplicadosMyVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDuplicadosMyVActionPerformed
+  // Obtener el modelo de la tabla
     DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
-    
-    // Buscar filas duplicadas
-    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
-    
+
+    // Buscar filas duplicadas y actualizar JTextField
+    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla, tamañoDuplicadosMusica, 
+                                                      cantidadDuplicadosMusica, tamañoDuplicadosVideo, 
+                                                      cantidadDuplicadosVideo);
+
     // Limpiar la tabla actual
     modeloTabla.setRowCount(0);
-    
+
     // Agregar las filas duplicadas nuevamente a la tabla
     for (Object[] fila : filasDuplicadas) {
         modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
     }
-    
+
     // Mostrar mensaje si no hay duplicados
     if (filasDuplicadas.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
     }
-    }//GEN-LAST:event_verDuplicadosMyV1ActionPerformed
+    }//GEN-LAST:event_verDuplicadosMyVActionPerformed
+
+    private void ordenarXartistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarXartistaActionPerformed
+          // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Crear un TableRowSorter para el modelo
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+    
+    // Configurar el sorter en la tabla correspondiente
+    tablaDatosMyV.setRowSorter(sorter);
+    
+    // "Artista Indice 2"
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(2, SortOrder.ASCENDING)));
+    
+    // Ordenar la tabla
+    sorter.sort();
+    }//GEN-LAST:event_ordenarXartistaActionPerformed
+
+    private void ordenarXalbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarXalbumActionPerformed
+         // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Crear un TableRowSorter para el modelo
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+    
+    // Configurar el sorter en la tabla correspondiente
+    tablaDatosMyV.setRowSorter(sorter);
+    
+    // "Album Indice 3"
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
+    
+    // Ordenar la tabla
+    sorter.sort();
+    }//GEN-LAST:event_ordenarXalbumActionPerformed
+
+    private void ordenarXgeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarXgeneroActionPerformed
+    // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Crear un TableRowSorter para el modelo
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+    
+    // Configurar el sorter en la tabla correspondiente
+    tablaDatosMyV.setRowSorter(sorter);
+    
+    // "Genero Indice 4"
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(4, SortOrder.ASCENDING)));
+    
+    // Ordenar la tabla
+    sorter.sort();
+    }//GEN-LAST:event_ordenarXgeneroActionPerformed
+
+    private void ordenarXduracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarXduracionActionPerformed
+    // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Crear un TableRowSorter para el modelo
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+    
+    // Configurar el sorter en la tabla correspondiente
+    tablaDatosMyV.setRowSorter(sorter);
+    
+    // "duracion Indice 5"
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(5, SortOrder.ASCENDING)));
+    
+    // Ordenar la tabla
+    sorter.sort();
+    }//GEN-LAST:event_ordenarXduracionActionPerformed
+
+    private void ordenarXañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarXañoActionPerformed
+        // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Crear un TableRowSorter para el modelo
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+    
+    // Configurar el sorter en la tabla correspondiente
+    tablaDatosMyV.setRowSorter(sorter);
+    
+    // "Año Indice 6"
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(6, SortOrder.ASCENDING)));
+    
+    // Ordenar la tabla
+    sorter.sort();
+    }//GEN-LAST:event_ordenarXañoActionPerformed
+
+    private void ordenarXtamañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarXtamañoActionPerformed
+    // Obtener el modelo de la tabla
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    // Crear un TableRowSorter para el modelo
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+    
+    // Configurar el sorter en la tabla correspondiente
+    tablaDatosMyV.setRowSorter(sorter);
+    
+    // "Tamaño Indice 8 "
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(6, SortOrder.ASCENDING)));
+    
+    // Ordenar la tabla
+    sorter.sort();
+    }//GEN-LAST:event_ordenarXtamañoActionPerformed
 
 
     
@@ -1709,6 +1902,12 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JMenuItem ordenXnombre;
+    private javax.swing.JMenuItem ordenarXalbum;
+    private javax.swing.JMenuItem ordenarXartista;
+    private javax.swing.JMenuItem ordenarXaño;
+    private javax.swing.JMenuItem ordenarXduracion;
+    private javax.swing.JMenuItem ordenarXgenero;
+    private javax.swing.JMenuItem ordenarXtamaño;
     private javax.swing.JPanel panelAlmacenamiento;
     private javax.swing.JPanel panelAlmacenamientoDuplicados;
     private javax.swing.JPanel panelTablas;
@@ -1729,7 +1928,7 @@ private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
     private javax.swing.JTextField textFieldTotal2;
     private javax.swing.JTextField textFieldVideo2;
     private javax.swing.JButton verDuplicadosFotos;
-    private javax.swing.JButton verDuplicadosMyV1;
+    private javax.swing.JButton verDuplicadosMyV;
     // End of variables declaration//GEN-END:variables
 
 

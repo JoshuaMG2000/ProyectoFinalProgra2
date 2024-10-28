@@ -43,6 +43,54 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenXnombreActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ordenarXartista">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Por Artista A-Z"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarXartistaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ordenarXalbum">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Por &#xc1;lbum A-Z"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarXalbumActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ordenarXgenero">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Por G&#xe9;nero A-Z"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarXgeneroActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ordenarXduracion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Por Duraci&#xf3;n A-Z"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarXduracionActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ordenarXa&#xf1;o">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Por A&#xf1;o A-Z"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarXa&#xf1;oActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ordenarXtama&#xf1;o">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Por Tama&#xf1;o A-Z"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarXtama&#xf1;oActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -541,7 +589,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="610" width="1060" height="40"/>
+              <AbsoluteConstraints x="20" y="620" width="1060" height="40"/>
             </Constraint>
           </Constraints>
 
@@ -725,7 +773,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="340" width="1060" height="240"/>
+              <AbsoluteConstraints x="20" y="350" width="1060" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -744,7 +792,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="10" width="1040" height="260"/>
+                  <AbsoluteConstraints x="10" y="10" width="1040" height="220"/>
                 </Constraint>
               </Constraints>
 
@@ -857,7 +905,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="10" width="1040" height="260"/>
+                  <AbsoluteConstraints x="10" y="10" width="1040" height="220"/>
                 </Constraint>
               </Constraints>
 
@@ -957,7 +1005,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="230" y="50" width="860" height="200"/>
+              <AbsoluteConstraints x="240" y="220" width="840" height="30"/>
             </Constraint>
           </Constraints>
 
@@ -1041,7 +1089,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="590" width="1060" height="10"/>
+              <AbsoluteConstraints x="20" y="600" width="1060" height="10"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1057,7 +1105,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="440" y="290" width="260" height="30"/>
+              <AbsoluteConstraints x="440" y="300" width="260" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1179,7 +1227,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="940" y="270" width="130" height="40"/>
+              <AbsoluteConstraints x="940" y="250" width="130" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1592,7 +1640,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="verDuplicadosMyV1">
+        <Component class="javax.swing.JButton" name="verDuplicadosMyV">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="50" green="54" id="Actions.Red" palette="3" red="c7" type="palette"/>
@@ -1606,11 +1654,11 @@
             <Property name="text" type="java.lang.String" value="DUPLICADOS"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verDuplicadosMyV1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verDuplicadosMyVActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="940" y="290" width="130" height="40"/>
+              <AbsoluteConstraints x="940" y="300" width="130" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1619,7 +1667,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="C:\Users\Josue\OneDrive - Universidad Mariano G&#xe1;lvez\4. CUARTO SEMESTRE\PROGRAMACION II\Proyecto_PrograV3\src\main\resources\fondos\paletota.jpg"/>
             </Property>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="inheritsPopupMenu" type="boolean" value="false"/>
           </Properties>
           <Constraints>
