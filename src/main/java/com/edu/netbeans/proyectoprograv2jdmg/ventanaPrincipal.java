@@ -155,7 +155,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         cantidadTotalDuplicados = new javax.swing.JTextField();
         tamañoDuplicadosVideo = new javax.swing.JTextField();
         tamañoTotalDuplicados = new javax.swing.JTextField();
-        tamañoDuplicadosFotos = new javax.swing.JTextField();
+        tamañoDuplicadosImagenes = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -164,7 +164,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         tamañoDuplicadosMusica = new javax.swing.JTextField();
         cantidadDuplicadosMusica = new javax.swing.JTextField();
         cantidadDuplicadosVideo = new javax.swing.JTextField();
-        cantidadDuplicadosFotos = new javax.swing.JTextField();
+        cantidadDuplicadosImagenes = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         botonMusica = new javax.swing.JButton();
         botonVideo = new javax.swing.JButton();
@@ -190,7 +190,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         ordenarFotosXdispositivo = new javax.swing.JMenuItem();
         ordenarFotosXmodelo = new javax.swing.JMenuItem();
         menuVerDuplicados = new javax.swing.JMenu();
-        itemVerDuplicadosMyV = new javax.swing.JMenuItem();
+        itemVerDuplicadosMusica = new javax.swing.JMenuItem();
+        itemVerDuplicadosVideos = new javax.swing.JMenuItem();
         itemVerDuplicadosFotos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -569,32 +570,35 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 cantidadTotalDuplicadosActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 60, 30));
+        panelAlmacenamientoDuplicados.add(cantidadTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 50, 30));
 
         tamañoDuplicadosVideo.setEditable(false);
         tamañoDuplicadosVideo.setBackground(new java.awt.Color(0, 0, 0));
         tamañoDuplicadosVideo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        panelAlmacenamientoDuplicados.add(tamañoDuplicadosVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, 30));
+        tamañoDuplicadosVideo.setForeground(new java.awt.Color(255, 255, 255));
+        panelAlmacenamientoDuplicados.add(tamañoDuplicadosVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 100, 30));
 
         tamañoTotalDuplicados.setEditable(false);
         tamañoTotalDuplicados.setBackground(new java.awt.Color(0, 0, 0));
         tamañoTotalDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        panelAlmacenamientoDuplicados.add(tamañoTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 70, 30));
+        tamañoTotalDuplicados.setForeground(new java.awt.Color(255, 255, 255));
+        panelAlmacenamientoDuplicados.add(tamañoTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 100, 30));
 
-        tamañoDuplicadosFotos.setEditable(false);
-        tamañoDuplicadosFotos.setBackground(new java.awt.Color(0, 0, 0));
-        tamañoDuplicadosFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        tamañoDuplicadosFotos.addActionListener(new java.awt.event.ActionListener() {
+        tamañoDuplicadosImagenes.setEditable(false);
+        tamañoDuplicadosImagenes.setBackground(new java.awt.Color(0, 0, 0));
+        tamañoDuplicadosImagenes.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        tamañoDuplicadosImagenes.setForeground(new java.awt.Color(255, 255, 255));
+        tamañoDuplicadosImagenes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tamañoDuplicadosFotosActionPerformed(evt);
+                tamañoDuplicadosImagenesActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(tamañoDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 70, 30));
+        panelAlmacenamientoDuplicados.add(tamañoDuplicadosImagenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 100, 30));
 
         jLabel10.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("CANTIDAD");
-        panelAlmacenamientoDuplicados.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 80, 20));
+        panelAlmacenamientoDuplicados.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 80, 20));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -617,7 +621,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("TAMAÑO");
-        panelAlmacenamientoDuplicados.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 70, 20));
+        panelAlmacenamientoDuplicados.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 20));
 
         tamañoDuplicadosMusica.setEditable(false);
         tamañoDuplicadosMusica.setBackground(new java.awt.Color(0, 0, 0));
@@ -628,7 +632,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 tamañoDuplicadosMusicaActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(tamañoDuplicadosMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 70, 30));
+        panelAlmacenamientoDuplicados.add(tamañoDuplicadosMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 100, 30));
 
         cantidadDuplicadosMusica.setEditable(false);
         cantidadDuplicadosMusica.setBackground(new java.awt.Color(0, 0, 0));
@@ -639,7 +643,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 cantidadDuplicadosMusicaActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadDuplicadosMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 60, 30));
+        panelAlmacenamientoDuplicados.add(cantidadDuplicadosMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 50, 30));
 
         cantidadDuplicadosVideo.setEditable(false);
         cantidadDuplicadosVideo.setBackground(new java.awt.Color(0, 0, 0));
@@ -650,25 +654,25 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 cantidadDuplicadosVideoActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadDuplicadosVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 60, 30));
+        panelAlmacenamientoDuplicados.add(cantidadDuplicadosVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 50, 30));
 
-        cantidadDuplicadosFotos.setEditable(false);
-        cantidadDuplicadosFotos.setBackground(new java.awt.Color(0, 0, 0));
-        cantidadDuplicadosFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        cantidadDuplicadosFotos.setForeground(new java.awt.Color(255, 255, 255));
-        cantidadDuplicadosFotos.addActionListener(new java.awt.event.ActionListener() {
+        cantidadDuplicadosImagenes.setEditable(false);
+        cantidadDuplicadosImagenes.setBackground(new java.awt.Color(0, 0, 0));
+        cantidadDuplicadosImagenes.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        cantidadDuplicadosImagenes.setForeground(new java.awt.Color(255, 255, 255));
+        cantidadDuplicadosImagenes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadDuplicadosFotosActionPerformed(evt);
+                cantidadDuplicadosImagenesActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 60, 30));
+        panelAlmacenamientoDuplicados.add(cantidadDuplicadosImagenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 50, 30));
 
         jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(204, 0, 102));
         jLabel15.setText("ALMACENAMIENTO DUPLICADOS");
         panelAlmacenamientoDuplicados.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        Panel_Fondo.add(panelAlmacenamientoDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 240, 240));
+        Panel_Fondo.add(panelAlmacenamientoDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 250, 240));
 
         botonMusica.setBackground(new java.awt.Color(0, 102, 102));
         botonMusica.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -682,7 +686,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonMusicaActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(botonMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 130, 40));
+        Panel_Fondo.add(botonMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 110, 40));
 
         botonVideo.setBackground(new java.awt.Color(0, 102, 102));
         botonVideo.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -696,7 +700,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonVideoActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(botonVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 130, 40));
+        Panel_Fondo.add(botonVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 110, 40));
 
         botonFotos.setBackground(new java.awt.Color(0, 102, 102));
         botonFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -710,7 +714,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonFotosActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(botonFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 130, 40));
+        Panel_Fondo.add(botonFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 110, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\fondos\\paletota.jpg")); // NOI18N
         jLabel3.setInheritsPopupMenu(false);
@@ -853,13 +857,21 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         menuVerDuplicados.setText("Ver Duplicados");
 
-        itemVerDuplicadosMyV.setText("Musica Y Video");
-        itemVerDuplicadosMyV.addActionListener(new java.awt.event.ActionListener() {
+        itemVerDuplicadosMusica.setText("Musica");
+        itemVerDuplicadosMusica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemVerDuplicadosMyVActionPerformed(evt);
+                itemVerDuplicadosMusicaActionPerformed(evt);
             }
         });
-        menuVerDuplicados.add(itemVerDuplicadosMyV);
+        menuVerDuplicados.add(itemVerDuplicadosMusica);
+
+        itemVerDuplicadosVideos.setText("Videos");
+        itemVerDuplicadosVideos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemVerDuplicadosVideosActionPerformed(evt);
+            }
+        });
+        menuVerDuplicados.add(itemVerDuplicadosVideos);
 
         itemVerDuplicadosFotos.setText("Fotos");
         itemVerDuplicadosFotos.addActionListener(new java.awt.event.ActionListener() {
@@ -1568,109 +1580,15 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     }
     }//GEN-LAST:event_botonVerImagenActionPerformed
 
-
-private String obtenerNombreBase(String nombreArchivo) {
-    // Expresión regular para detectar "(n)", "- copia", "- Copy" o similares al final del nombre, y extensiones .mp3, .mp4, .jpg, y .png
-    String regex = "^(.*?)(\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?\\s*(\\.mp3|\\.mp4|\\.jpg|\\.png)?$";
-    
-    /* Explicación detallada de la expresión regular:
-       ^(.*?):         Captura el nombre principal del archivo de forma no codiciosa (.*?), sin incluir ningún sufijo o extensión.
-       (\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?:   Esta es la parte que captura y omite los sufijos:
-                         \\s*:       Permite un espacio opcional antes del sufijo.
-                         (\\(\\d+\\)):   Detecta números entre paréntesis, como (1), (2), etc.
-                         |-\\s*[Cc]opia y |-\\s*[Cc]opy:   Detecta sufijos "- copia" o "- Copy", sin distinguir mayúsculas o minúsculas en la palabra.
-       (\\.mp3|\\.mp4|\\.jpg|\\.png)?$:   Detecta extensiones al final del nombre (.mp3, .mp4, .jpg, .png) si están presentes.
-       
-       Al usar matcher.group(1).trim(), el método extrae el nombre principal del archivo sin sufijos ni extensiones.
-       Si no hay coincidencia, el método devuelve el nombre original del archivo.
-    */
-    
-    Pattern pattern = Pattern.compile(regex);
-    Matcher matcher = pattern.matcher(nombreArchivo);
-    
-    if (matcher.matches()) {
-        // Retorna solo el grupo sin el número en paréntesis o sufijo
-        return matcher.group(1).trim();
-    }
-    
-    return nombreArchivo;
-}
-
-// Método modificado para buscar duplicados usando el nombre base
-private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla, 
-                                        JTextField tamañoDuplicadosMusica, 
-                                        JTextField cantidadDuplicadosMusica, 
-                                        JTextField tamañoDuplicadosVideo, 
-                                        JTextField cantidadDuplicadosVideo) {
-    List<Object[]> duplicados = new ArrayList<>();
-    Set<String> nombresEncontrados = new HashSet<>();
-    Set<String> nombresDuplicados = new HashSet<>();
-    
-    double totalSizeMp3 = 0.0;
-    int countMp3 = 0;
-    double totalSizeMp4 = 0.0;
-    int countMp4 = 0;
-
-    // Primera pasada: identificar nombres duplicados sin paréntesis o sufijos
-    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-        String nombreArchivoOriginal = modeloTabla.getValueAt(i, 0).toString();
-        String nombreArchivo = obtenerNombreBase(nombreArchivoOriginal);
-
-        if (nombresEncontrados.contains(nombreArchivo)) {
-            nombresDuplicados.add(nombreArchivo);
-        } else {
-            nombresEncontrados.add(nombreArchivo);
-        }
-    }
-
-    // Segunda pasada: agregar filas duplicadas y calcular tamaños para mp3 y mp4
-    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-        String nombreArchivoOriginal = modeloTabla.getValueAt(i, 0).toString();
-        String nombreArchivo = obtenerNombreBase(nombreArchivoOriginal);
-        String extension = obtenerExtension(nombreArchivoOriginal); // Método que devuelve la extensión del archivo
-        
-        if (nombresDuplicados.contains(nombreArchivo)) {
-            Object[] fila = new Object[modeloTabla.getColumnCount()];
-            for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
-                fila[j] = modeloTabla.getValueAt(i, j);
-            }
-            duplicados.add(fila);
-            
-            // Dependiendo de la extensión, suma al total correspondiente
-            double tamañoArchivo = Double.parseDouble(modeloTabla.getValueAt(i, modeloTabla.findColumn("Tamaño")).toString());
-            if (".mp3".equalsIgnoreCase(extension)) {
-                totalSizeMp3 += tamañoArchivo;
-                countMp3++;
-            } else if (".mp4".equalsIgnoreCase(extension)) {
-                totalSizeMp4 += tamañoArchivo;
-                countMp4++;
-            }
-        }
-    }
-
-    // Mostrar tamaño y cantidad de duplicados en los JTextFields respectivos
-    tamañoDuplicadosMusica.setText(String.format("%.2f MB", totalSizeMp3));
-    cantidadDuplicadosMusica.setText(String.valueOf(countMp3));
-    tamañoDuplicadosVideo.setText(String.format("%.2f MB", totalSizeMp4));
-    cantidadDuplicadosVideo.setText(String.valueOf(countMp4));
-
-    return duplicados;
-}
-
-// Método auxiliar para obtener la extensión del archivo
-private String obtenerExtension(String nombreArchivo) {
-    int lastDotIndex = nombreArchivo.lastIndexOf(".");
-    return (lastDotIndex != -1) ? nombreArchivo.substring(lastDotIndex).toLowerCase() : "";
-}
-    
+   
     
     private void cantidadTotalDuplicadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadTotalDuplicadosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadTotalDuplicadosActionPerformed
 
-    private void tamañoDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamañoDuplicadosFotosActionPerformed
+    private void tamañoDuplicadosImagenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamañoDuplicadosImagenesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tamañoDuplicadosFotosActionPerformed
+    }//GEN-LAST:event_tamañoDuplicadosImagenesActionPerformed
 
     private void tamañoDuplicadosMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamañoDuplicadosMusicaActionPerformed
         // TODO add your handling code here:
@@ -1684,9 +1602,9 @@ private String obtenerExtension(String nombreArchivo) {
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadDuplicadosVideoActionPerformed
 
-    private void cantidadDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadDuplicadosFotosActionPerformed
+    private void cantidadDuplicadosImagenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadDuplicadosImagenesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadDuplicadosFotosActionPerformed
+    }//GEN-LAST:event_cantidadDuplicadosImagenesActionPerformed
 
     private void textFieldMusicaCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMusicaCantidadActionPerformed
         // TODO add your handling code here:
@@ -1927,51 +1845,142 @@ private String obtenerExtension(String nombreArchivo) {
     
     }//GEN-LAST:event_ordenarFotosXmodeloActionPerformed
 
-    private void itemVerDuplicadosMyVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosMyVActionPerformed
-    // Obtener el modelo de la tabla
+    private String obtenerNombreBase(String nombreArchivo) {
+    // Expresión regular para detectar "(n)", "- copia", "- Copy" o similares al final del nombre, y extensiones .mp3, .mp4, .jpg, y .png
+    String regex = "^(.*?)(\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?\\s*(\\.mp3|\\.mp4|\\.jpg|\\.png)?$";
+    
+    /* Explicación detallada de la expresión regular:
+       ^(.*?):         Captura el nombre principal del archivo de forma no codiciosa (.*?), sin incluir ningún sufijo o extensión.
+       (\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))?:   Esta es la parte que captura y omite los sufijos:
+                         \\s*:       Permite un espacio opcional antes del sufijo.
+                         (\\(\\d+\\)):   Detecta números entre paréntesis, como (1), (2), etc.
+                         |-\\s*[Cc]opia y |-\\s*[Cc]opy:   Detecta sufijos "- copia" o "- Copy", sin distinguir mayúsculas o minúsculas en la palabra.
+       (\\.mp3|\\.mp4|\\.jpg|\\.png)?$:   Detecta extensiones al final del nombre (.mp3, .mp4, .jpg, .png) si están presentes.
+       
+       Al usar matcher.group(1).trim(), el método extrae el nombre principal del archivo sin sufijos ni extensiones.
+       Si no hay coincidencia, el método devuelve el nombre original del archivo.
+    */
+    
+    Pattern pattern = Pattern.compile(regex);
+    Matcher matcher = pattern.matcher(nombreArchivo);
+    
+    if (matcher.matches()) {
+        // Retorna solo el grupo sin el número en paréntesis o sufijo
+        return matcher.group(1).trim();
+    }
+    
+    return nombreArchivo;
+}
+    
+    private List<Object[]> buscarDuplicados(DefaultTableModel modeloTabla) {
+    List<Object[]> duplicados = new ArrayList<>();
+    Set<String> nombresEncontrados = new HashSet<>();
+    Set<String> nombresDuplicados = new HashSet<>();
+
+    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+        String nombreArchivoOriginal = modeloTabla.getValueAt(i, 0).toString();
+        String nombreArchivo = obtenerNombreBase(nombreArchivoOriginal); // Obtener nombre base
+
+        if (nombresEncontrados.contains(nombreArchivo)) {
+            nombresDuplicados.add(nombreArchivo);
+        } else {
+            nombresEncontrados.add(nombreArchivo);
+        }
+    }
+
+    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+        String nombreArchivoOriginal = modeloTabla.getValueAt(i, 0).toString();
+        String nombreArchivo = obtenerNombreBase(nombreArchivoOriginal);
+
+        if (nombresDuplicados.contains(nombreArchivo)) {
+            Object[] fila = new Object[modeloTabla.getColumnCount()];
+            for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
+                fila[j] = modeloTabla.getValueAt(i, j);
+            }
+            duplicados.add(fila);
+        }
+    }
+
+    return duplicados;
+}
+    
+    private void sumarTamañoArchivos(DefaultTableModel modeloTabla, int columnaTamaño, JTextField textFieldTamañoTotal) {
+    long tamañoTotal = 0;
+
+    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+        // Asegúrate de que la columna contiene valores numéricos (long) para el tamaño de archivos
+        tamañoTotal += (long) modeloTabla.getValueAt(i, columnaTamaño);
+    }
+    
+    // Convierte el tamaño total a MB
+    double tamañoTotalMB = tamañoTotal / (1024.0 * 1024.0);
+    textFieldTamañoTotal.setText(String.format("%.2f MB", tamañoTotalMB)); // Muestra el tamaño en MB con 2 decimales
+    }
+    
+    private void contarFilas(DefaultTableModel modeloTabla, JTextField textFieldCantidad) {
+    int cantidadFilas = modeloTabla.getRowCount(); // Obtiene el número de filas
+    textFieldCantidad.setText(String.valueOf(cantidadFilas)); // Muestra el conteo en el JTextField
+    }
+    
+    private void itemVerDuplicadosVideosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosVideosActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
-
-    // Buscar filas duplicadas y actualizar JTextField
-    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla, tamañoDuplicadosMusica, 
-                                                      cantidadDuplicadosMusica, tamañoDuplicadosVideo, 
-                                                      cantidadDuplicadosVideo);
-
-    // Limpiar la tabla actual
+    
+    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
+    
     modeloTabla.setRowCount(0);
-
-    // Agregar las filas duplicadas nuevamente a la tabla
+    
     for (Object[] fila : filasDuplicadas) {
         modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
     }
-
-    // Mostrar mensaje si no hay duplicados
+    
+    // Llama a los métodos para mostrar la cantidad de filas y tamaño total en JTextFields
+    contarFilas(modeloTabla, cantidadDuplicadosVideo); // Reemplaza por el JTextField adecuado
+    sumarTamañoArchivos(modeloTabla, 8, tamañoDuplicadosVideo); // Columna 8 para el tamaño, JTextField correspondiente
+    
     if (filasDuplicadas.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
     }
-    }//GEN-LAST:event_itemVerDuplicadosMyVActionPerformed
+    }//GEN-LAST:event_itemVerDuplicadosVideosActionPerformed
 
     private void itemVerDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosFotosActionPerformed
-      // Obtener el modelo de la tabla
-    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosFotos.getModel();
-
-    // Buscar filas duplicadas y actualizar JTextField
-    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla, tamañoDuplicadosMusica, 
-                                                      cantidadDuplicadosMusica, tamañoDuplicadosVideo, 
-                                                      cantidadDuplicadosVideo);
-
-    // Limpiar la tabla actual
+       DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosFotos.getModel();
+    
+    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
+    
     modeloTabla.setRowCount(0);
-
-    // Agregar las filas duplicadas nuevamente a la tabla
+    
     for (Object[] fila : filasDuplicadas) {
         modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
     }
-
-    // Mostrar mensaje si no hay duplicados
+    
+    // Llama a los métodos para mostrar la cantidad de filas y tamaño total en JTextFields
+    contarFilas(modeloTabla, cantidadDuplicadosImagenes); // Reemplaza por el JTextField adecuado
+    sumarTamañoArchivos(modeloTabla, 8, tamañoDuplicadosImagenes); // Columna 8 para el tamaño, JTextField correspondiente
+    
     if (filasDuplicadas.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
     }
     }//GEN-LAST:event_itemVerDuplicadosFotosActionPerformed
+
+    private void itemVerDuplicadosMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosMusicaActionPerformed
+    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
+    
+    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
+    
+    modeloTabla.setRowCount(0);
+    
+    for (Object[] fila : filasDuplicadas) {
+        modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
+    }
+    
+    // Llama a los métodos para mostrar la cantidad de filas y tamaño total en JTextFields
+    contarFilas(modeloTabla, cantidadDuplicadosMusica); // Reemplaza por el JTextField adecuado
+    sumarTamañoArchivos(modeloTabla, 8, tamañoDuplicadosMusica); // Columna 8 para el tamaño, JTextField correspondiente
+    
+    if (filasDuplicadas.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
+    }
+    }//GEN-LAST:event_itemVerDuplicadosMusicaActionPerformed
 
 
     
@@ -1991,12 +2000,13 @@ private String obtenerExtension(String nombreArchivo) {
     private javax.swing.JButton botonVerDuplicados;
     private javax.swing.JButton botonVerImagen;
     private javax.swing.JButton botonVideo;
-    private javax.swing.JTextField cantidadDuplicadosFotos;
+    private javax.swing.JTextField cantidadDuplicadosImagenes;
     private javax.swing.JTextField cantidadDuplicadosMusica;
     private javax.swing.JTextField cantidadDuplicadosVideo;
     private javax.swing.JTextField cantidadTotalDuplicados;
     private javax.swing.JMenuItem itemVerDuplicadosFotos;
-    private javax.swing.JMenuItem itemVerDuplicadosMyV;
+    private javax.swing.JMenuItem itemVerDuplicadosMusica;
+    private javax.swing.JMenuItem itemVerDuplicadosVideos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2046,7 +2056,7 @@ private String obtenerExtension(String nombreArchivo) {
     private javax.swing.JMenuItem seleccionCarpeta;
     private javax.swing.JTable tablaDatosFotos;
     private javax.swing.JTable tablaDatosMyV;
-    private javax.swing.JTextField tamañoDuplicadosFotos;
+    private javax.swing.JTextField tamañoDuplicadosImagenes;
     private javax.swing.JTextField tamañoDuplicadosMusica;
     private javax.swing.JTextField tamañoDuplicadosVideo;
     private javax.swing.JTextField tamañoTotalDuplicados;
