@@ -153,20 +153,12 @@
             <Property name="text" type="java.lang.String" value="Ver Duplicados"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemVerDuplicadosMusica">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerDuplicadosVideosYMusica">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Musica"/>
+                <Property name="text" type="java.lang.String" value="Musica &amp; Videos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemVerDuplicadosMusicaActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemVerDuplicadosVideos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Videos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemVerDuplicadosVideosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemVerDuplicadosVideosYMusicaActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemVerDuplicadosFotos">

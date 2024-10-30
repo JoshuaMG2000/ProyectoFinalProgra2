@@ -25,23 +25,25 @@ public class JFrameFotos extends javax.swing.JFrame {
         botonRegresarFotos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelParaFotos.setBackground(new java.awt.Color(204, 204, 204));
         labelParaFotos.setOpaque(true);
-        getContentPane().add(labelParaFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 21, 1020, 560));
+        getContentPane().add(labelParaFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 560));
 
         botonRegresarFotos.setBackground(new java.awt.Color(0, 51, 51));
-        botonRegresarFotos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        botonRegresarFotos.setForeground(new java.awt.Color(255, 255, 0));
-        botonRegresarFotos.setText("regresar");
+        botonRegresarFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        botonRegresarFotos.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegresarFotos.setText("REGRESAR");
         botonRegresarFotos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonRegresarFotos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonRegresarFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegresarFotosActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegresarFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 530, 120, 50));
+        getContentPane().add(botonRegresarFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 520, 120, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

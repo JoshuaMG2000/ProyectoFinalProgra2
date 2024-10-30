@@ -62,6 +62,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -190,8 +191,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         ordenarFotosXdispositivo = new javax.swing.JMenuItem();
         ordenarFotosXmodelo = new javax.swing.JMenuItem();
         menuVerDuplicados = new javax.swing.JMenu();
-        itemVerDuplicadosMusica = new javax.swing.JMenuItem();
-        itemVerDuplicadosVideos = new javax.swing.JMenuItem();
+        itemVerDuplicadosVideosYMusica = new javax.swing.JMenuItem();
         itemVerDuplicadosFotos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -857,21 +857,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         menuVerDuplicados.setText("Ver Duplicados");
 
-        itemVerDuplicadosMusica.setText("Musica");
-        itemVerDuplicadosMusica.addActionListener(new java.awt.event.ActionListener() {
+        itemVerDuplicadosVideosYMusica.setText("Musica & Videos");
+        itemVerDuplicadosVideosYMusica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemVerDuplicadosMusicaActionPerformed(evt);
+                itemVerDuplicadosVideosYMusicaActionPerformed(evt);
             }
         });
-        menuVerDuplicados.add(itemVerDuplicadosMusica);
-
-        itemVerDuplicadosVideos.setText("Videos");
-        itemVerDuplicadosVideos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemVerDuplicadosVideosActionPerformed(evt);
-            }
-        });
-        menuVerDuplicados.add(itemVerDuplicadosVideos);
+        menuVerDuplicados.add(itemVerDuplicadosVideosYMusica);
 
         itemVerDuplicadosFotos.setText("Fotos");
         itemVerDuplicadosFotos.addActionListener(new java.awt.event.ActionListener() {
@@ -1105,7 +1097,10 @@ public void buscarArchivosMP4(File directorio, DefaultTableModel modeloTabla) {
                     // Obtener el año de lanzamiento, o "Desconocido" si no está disponible
                     String año = metadata.get("xmpDM:releaseDate") != null ? metadata.get("xmpDM:releaseDate") : "Desconocido";
                     String ruta = archivo.getAbsolutePath(); // Ruta completa del archivo
-                    long tamaño = archivo.length();           // Tamaño del archivo en bytes
+                                       
+                    double tamañoMB = archivo.length() / (1024.0 * 1024.0); // Conversión a MB
+                    // Al agregar la fila:
+
 
                     // Crear una fila con los datos obtenidos
                     Object[] fila = {
@@ -1117,7 +1112,7 @@ public void buscarArchivosMP4(File directorio, DefaultTableModel modeloTabla) {
                         duracion,      // Duración en segundos
                         año,           // Año de publicación
                         ruta,          // Ruta completa del archivo
-                        tamaño         // Tamaño del archivo en bytes
+                        String.format("%.2f MB", tamañoMB)       // Tamaño del archivo en bytes
                     };
 
                     // Añadir la fila al modelo de la tabla
@@ -1147,7 +1142,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
                     String nombre = archivo.getName();
                     String extension = nombre.substring(nombre.lastIndexOf(".") + 1);
                     String ruta = archivo.getAbsolutePath();
-                    long tamaño = archivo.length(); // En bytes
+                    double tamañoMB = archivo.length() / (1024.0 * 1024.0); // Convertir a MB
                     Path filePath = archivo.toPath();
                     BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
                     String fechaCreacion = attr.creationTime().toString();
@@ -1179,7 +1174,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
                         ruta,
                         fechaCreacion,
                         fechaModificacion,
-                        tamaño / (1024 * 1024) + " MB", // Tamaño en MB
+                        String.format("%.2f MB", tamañoMB),
                         dispositivo,
                         modelo
                     };
@@ -1731,7 +1726,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     tablaDatosMyV.setRowSorter(sorter);
     
     // "Tamaño Indice 8 "
-    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(6, SortOrder.ASCENDING)));
+    sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(8, SortOrder.ASCENDING)));
     
     // Ordenar la tabla
     sorter.sort();
@@ -1903,26 +1898,87 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
 
     return duplicados;
 }
-    
-    private void sumarTamañoArchivos(DefaultTableModel modeloTabla, int columnaTamaño, JTextField textFieldTamañoTotal) {
-    long tamañoTotal = 0;
+
+    /*
+private void sumarTamañoArchivos(DefaultTableModel modeloTabla, int columnaTamaño, int columnaExtension, JTextField textFieldTamañoTotal) {
+    double tamañoTotalMB = 0;
+    List<String> extensionesPermitidas = Arrays.asList("mp3", "mp4", "jpg", "png");
 
     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-        // Asegúrate de que la columna contiene valores numéricos (long) para el tamaño de archivos
-        tamañoTotal += (long) modeloTabla.getValueAt(i, columnaTamaño);
+        // Verifica si la extensión está en la lista de extensiones permitidas
+        String extension = ((String) modeloTabla.getValueAt(i, columnaExtension)).toLowerCase();
+
+        if (extensionesPermitidas.contains(extension)) {
+            Object valor = modeloTabla.getValueAt(i, columnaTamaño);
+
+            if (valor instanceof String) {
+                // Eliminar " MB" y convertir a double
+                String tamañoStr = ((String) valor).replace(" MB", "").trim();
+                
+                try {
+                    tamañoTotalMB += Double.parseDouble(tamañoStr);
+                } catch (NumberFormatException e) {
+                    System.err.println("Error al convertir el tamaño: " + e.getMessage());
+                }
+            } else if (valor instanceof Long) {
+                // Convertir de bytes a MB y sumar
+                tamañoTotalMB += (Long) valor / (1024.0 * 1024.0);
+            }
+        }
     }
     
-    // Convierte el tamaño total a MB
-    double tamañoTotalMB = tamañoTotal / (1024.0 * 1024.0);
-    textFieldTamañoTotal.setText(String.format("%.2f MB", tamañoTotalMB)); // Muestra el tamaño en MB con 2 decimales
+    // Mostrar el tamaño total en MB en el JTextField
+    textFieldTamañoTotal.setText(String.format("%.2f MB", tamañoTotalMB));
+}*/
+
+    
+    private void sumarTamañoArchivos(DefaultTableModel modeloTabla, int columnaTamaño, int columnaExtension, JTextField textFieldTamañoTotal, String extensionFiltrada) {
+    double tamañoTotalMB = 0;
+
+    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+        // Obtén la extensión del archivo y verifica si coincide con la extensión especificada
+        String extension = ((String) modeloTabla.getValueAt(i, columnaExtension)).toLowerCase();
+
+        if (extension.equals(extensionFiltrada)) {
+            Object valorTamaño = modeloTabla.getValueAt(i, columnaTamaño);
+
+            // Verifica y convierte el valor de tamaño
+            if (valorTamaño instanceof String) {
+                String tamañoStr = ((String) valorTamaño).replace(" MB", "").trim();
+                try {
+                    tamañoTotalMB += Double.parseDouble(tamañoStr);
+                } catch (NumberFormatException e) {
+                    System.err.println("Error al convertir el tamaño: " + e.getMessage());
+                }
+            } else if (valorTamaño instanceof Long) {
+                tamañoTotalMB += (Long) valorTamaño / (1024.0 * 1024.0); // Convierte bytes a MB
+            }
+        }
     }
     
-    private void contarFilas(DefaultTableModel modeloTabla, JTextField textFieldCantidad) {
-    int cantidadFilas = modeloTabla.getRowCount(); // Obtiene el número de filas
-    textFieldCantidad.setText(String.valueOf(cantidadFilas)); // Muestra el conteo en el JTextField
+    // Actualiza el JTextField solo si el tamaño total es mayor a 0
+    if (tamañoTotalMB > 0) {
+        textFieldTamañoTotal.setText(String.format("%.2f MB", tamañoTotalMB));
     }
+}
     
-    private void itemVerDuplicadosVideosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosVideosActionPerformed
+private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JTextField textFieldCantidad, String extensionFiltrada) {
+    int cantidadFilas = 0;
+
+    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+        // Obtén la extensión del archivo y verifica si coincide con la extensión especificada
+        String extension = ((String) modeloTabla.getValueAt(i, columnaExtension)).toLowerCase();
+
+        if (extension.equals(extensionFiltrada)) {
+            cantidadFilas++; // Cuenta solo si la extensión coincide
+        }
+    }
+    if (cantidadFilas > 0) {
+        textFieldCantidad.setText(String.valueOf(cantidadFilas));
+    }
+}
+    
+    private void itemVerDuplicadosVideosYMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosVideosYMusicaActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
     
     List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
@@ -1933,14 +1989,19 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
         modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
     }
     
+    //VIDEOS
     // Llama a los métodos para mostrar la cantidad de filas y tamaño total en JTextFields
-    contarFilas(modeloTabla, cantidadDuplicadosVideo); // Reemplaza por el JTextField adecuado
-    sumarTamañoArchivos(modeloTabla, 8, tamañoDuplicadosVideo); // Columna 8 para el tamaño, JTextField correspondiente
+    contarFilas(modeloTabla, 1,cantidadDuplicadosVideo,"mp4"); // Reemplaza por el JTextField adecuado
+   sumarTamañoArchivos(modeloTabla, 8, 1, tamañoDuplicadosVideo, "mp4"); // Columna 8 para el tamaño, columna 1 para la extensión
+   
+   //MUSICA
+   contarFilas(modeloTabla, 1,cantidadDuplicadosMusica,"mp3"); // Reemplaza por el JTextField adecuado
+    sumarTamañoArchivos(modeloTabla, 8, 1, tamañoDuplicadosMusica, "mp3"); // Columna 8 para el tamaño, columna 1 para la extensión
     
     if (filasDuplicadas.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
     }
-    }//GEN-LAST:event_itemVerDuplicadosVideosActionPerformed
+    }//GEN-LAST:event_itemVerDuplicadosVideosYMusicaActionPerformed
 
     private void itemVerDuplicadosFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosFotosActionPerformed
        DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosFotos.getModel();
@@ -1954,33 +2015,13 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     }
     
     // Llama a los métodos para mostrar la cantidad de filas y tamaño total en JTextFields
-    contarFilas(modeloTabla, cantidadDuplicadosImagenes); // Reemplaza por el JTextField adecuado
-    sumarTamañoArchivos(modeloTabla, 8, tamañoDuplicadosImagenes); // Columna 8 para el tamaño, JTextField correspondiente
+    contarFilas(modeloTabla,1, cantidadDuplicadosImagenes,"jpg"); // Reemplaza por el JTextField adecuado
+    sumarTamañoArchivos(modeloTabla, 5, 1,tamañoDuplicadosImagenes,"jpg"); // Columna 8 para el tamaño, JTextField correspondiente
     
     if (filasDuplicadas.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
     }
     }//GEN-LAST:event_itemVerDuplicadosFotosActionPerformed
-
-    private void itemVerDuplicadosMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDuplicadosMusicaActionPerformed
-    DefaultTableModel modeloTabla = (DefaultTableModel) tablaDatosMyV.getModel();
-    
-    List<Object[]> filasDuplicadas = buscarDuplicados(modeloTabla);
-    
-    modeloTabla.setRowCount(0);
-    
-    for (Object[] fila : filasDuplicadas) {
-        modeloTabla.addRow(fila); // Volver a agregar cada fila duplicada
-    }
-    
-    // Llama a los métodos para mostrar la cantidad de filas y tamaño total en JTextFields
-    contarFilas(modeloTabla, cantidadDuplicadosMusica); // Reemplaza por el JTextField adecuado
-    sumarTamañoArchivos(modeloTabla, 8, tamañoDuplicadosMusica); // Columna 8 para el tamaño, JTextField correspondiente
-    
-    if (filasDuplicadas.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No se encontraron archivos duplicados.");
-    }
-    }//GEN-LAST:event_itemVerDuplicadosMusicaActionPerformed
 
 
     
@@ -2005,8 +2046,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     private javax.swing.JTextField cantidadDuplicadosVideo;
     private javax.swing.JTextField cantidadTotalDuplicados;
     private javax.swing.JMenuItem itemVerDuplicadosFotos;
-    private javax.swing.JMenuItem itemVerDuplicadosMusica;
-    private javax.swing.JMenuItem itemVerDuplicadosVideos;
+    private javax.swing.JMenuItem itemVerDuplicadosVideosYMusica;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
