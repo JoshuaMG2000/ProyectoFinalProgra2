@@ -149,13 +149,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         tablaDatosFotos = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         botonVerDuplicados = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
         jTextFieldBusqueda = new javax.swing.JTextField();
         panelAlmacenamientoDuplicados = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        cantidadTotalDuplicados = new javax.swing.JTextField();
+        textFieldTotalCantidad = new javax.swing.JTextField();
         tamañoDuplicadosVideo = new javax.swing.JTextField();
-        tamañoTotalDuplicados = new javax.swing.JTextField();
+        textFieldTotalDuplicados = new javax.swing.JTextField();
         tamañoDuplicadosImagenes = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -170,6 +169,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         botonMusica = new javax.swing.JButton();
         botonVideo = new javax.swing.JButton();
         botonFotos = new javax.swing.JButton();
+        botonVerTotal = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
@@ -515,13 +515,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         panelTablas.add(jScrollPaneFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 190));
 
-        Panel_Fondo.add(panelTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 1320, 210));
+        Panel_Fondo.add(panelTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 1320, 230));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 32)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REPRODUCTOR MULTIMEDIA JOSH");
-        Panel_Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 670, -1));
+        Panel_Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 790, 40));
 
         botonVerDuplicados.setBackground(new java.awt.Color(51, 51, 51));
         botonVerDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -535,10 +535,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 botonVerDuplicadosActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(botonVerDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 50, 30));
-
-        jProgressBar1.setBackground(new java.awt.Color(0, 0, 204));
-        Panel_Fondo.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 1320, 10));
+        Panel_Fondo.add(botonVerDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 50, 30));
 
         jTextFieldBusqueda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextFieldBusqueda.setText("Ingresa tu búsqueda aquí");
@@ -547,7 +544,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 jTextFieldBusquedaActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(jTextFieldBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 360, 30));
+        Panel_Fondo.add(jTextFieldBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 660, 30));
 
         panelAlmacenamientoDuplicados.setBackground(new java.awt.Color(51, 51, 51));
         panelAlmacenamientoDuplicados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -561,16 +558,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel9.setText("Fotos:");
         panelAlmacenamientoDuplicados.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
 
-        cantidadTotalDuplicados.setEditable(false);
-        cantidadTotalDuplicados.setBackground(new java.awt.Color(0, 0, 0));
-        cantidadTotalDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        cantidadTotalDuplicados.setForeground(new java.awt.Color(255, 255, 255));
-        cantidadTotalDuplicados.addActionListener(new java.awt.event.ActionListener() {
+        textFieldTotalCantidad.setEditable(false);
+        textFieldTotalCantidad.setBackground(new java.awt.Color(0, 0, 0));
+        textFieldTotalCantidad.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        textFieldTotalCantidad.setForeground(new java.awt.Color(255, 255, 255));
+        textFieldTotalCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadTotalDuplicadosActionPerformed(evt);
+                textFieldTotalCantidadActionPerformed(evt);
             }
         });
-        panelAlmacenamientoDuplicados.add(cantidadTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 50, 30));
+        panelAlmacenamientoDuplicados.add(textFieldTotalCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 50, 30));
 
         tamañoDuplicadosVideo.setEditable(false);
         tamañoDuplicadosVideo.setBackground(new java.awt.Color(0, 0, 0));
@@ -578,11 +575,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         tamañoDuplicadosVideo.setForeground(new java.awt.Color(255, 255, 255));
         panelAlmacenamientoDuplicados.add(tamañoDuplicadosVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 100, 30));
 
-        tamañoTotalDuplicados.setEditable(false);
-        tamañoTotalDuplicados.setBackground(new java.awt.Color(0, 0, 0));
-        tamañoTotalDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        tamañoTotalDuplicados.setForeground(new java.awt.Color(255, 255, 255));
-        panelAlmacenamientoDuplicados.add(tamañoTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 100, 30));
+        textFieldTotalDuplicados.setEditable(false);
+        textFieldTotalDuplicados.setBackground(new java.awt.Color(0, 0, 0));
+        textFieldTotalDuplicados.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        textFieldTotalDuplicados.setForeground(new java.awt.Color(255, 255, 255));
+        panelAlmacenamientoDuplicados.add(textFieldTotalDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 100, 30));
 
         tamañoDuplicadosImagenes.setEditable(false);
         tamañoDuplicadosImagenes.setBackground(new java.awt.Color(0, 0, 0));
@@ -715,6 +712,17 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
         Panel_Fondo.add(botonFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 110, 40));
+
+        botonVerTotal.setBackground(new java.awt.Color(0, 102, 102));
+        botonVerTotal.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        botonVerTotal.setText("VER TOTAL");
+        botonVerTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonVerTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerTotalActionPerformed(evt);
+            }
+        });
+        Panel_Fondo.add(botonVerTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 90, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\fondos\\paletota.jpg")); // NOI18N
         jLabel3.setInheritsPopupMenu(false);
@@ -1577,9 +1585,9 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
 
    
     
-    private void cantidadTotalDuplicadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadTotalDuplicadosActionPerformed
+    private void textFieldTotalCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTotalCantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadTotalDuplicadosActionPerformed
+    }//GEN-LAST:event_textFieldTotalCantidadActionPerformed
 
     private void tamañoDuplicadosImagenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamañoDuplicadosImagenesActionPerformed
         // TODO add your handling code here:
@@ -2023,6 +2031,27 @@ private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JT
     }
     }//GEN-LAST:event_itemVerDuplicadosFotosActionPerformed
 
+    private void botonVerTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerTotalActionPerformed
+    try {
+        // Convertir las cantidades en los JTextFields a double
+        double cantidadMusica = Double.parseDouble(cantidadDuplicadosMusica.getText());
+        double cantidadVideos = Double.parseDouble(cantidadDuplicadosVideo.getText());
+        double cantidadFotos = Double.parseDouble(cantidadDuplicadosImagenes.getText());
+        double totalCantidad = cantidadMusica + cantidadVideos + cantidadFotos;
+        
+        // Eliminar " MB" de los JTextFields de tamaño de duplicados antes de la conversión
+        double duplicadosMusica = Double.parseDouble(tamañoDuplicadosMusica.getText().replace(" MB", "").trim());
+        double duplicadosVideo = Double.parseDouble(tamañoDuplicadosVideo.getText().replace(" MB", "").trim());
+        double duplicadosFotos = Double.parseDouble(tamañoDuplicadosImagenes.getText().replace(" MB", "").trim());
+        double totalDuplicadosMB = duplicadosMusica + duplicadosVideo + duplicadosFotos;
+
+        textFieldTotalCantidad.setText(String.format("%.2f", totalCantidad)); // Cantidad total de archivos
+        textFieldTotalDuplicados.setText(String.format("%.2f MB", totalDuplicadosMB)); // Tamaño total de duplicados en MB
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Error al convertir valores: Verifique el contenido de los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_botonVerTotalActionPerformed
+
 
     
     
@@ -2040,11 +2069,11 @@ private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JT
     private javax.swing.JButton botonSiguienteMusica;
     private javax.swing.JButton botonVerDuplicados;
     private javax.swing.JButton botonVerImagen;
+    private javax.swing.JButton botonVerTotal;
     private javax.swing.JButton botonVideo;
     private javax.swing.JTextField cantidadDuplicadosImagenes;
     private javax.swing.JTextField cantidadDuplicadosMusica;
     private javax.swing.JTextField cantidadDuplicadosVideo;
-    private javax.swing.JTextField cantidadTotalDuplicados;
     private javax.swing.JMenuItem itemVerDuplicadosFotos;
     private javax.swing.JMenuItem itemVerDuplicadosVideosYMusica;
     private javax.swing.JLabel jLabel1;
@@ -2066,7 +2095,6 @@ private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JT
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPaneFotos;
     private javax.swing.JScrollPane jScrollPaneMyV;
     private javax.swing.JSeparator jSeparator1;
@@ -2099,13 +2127,14 @@ private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JT
     private javax.swing.JTextField tamañoDuplicadosImagenes;
     private javax.swing.JTextField tamañoDuplicadosMusica;
     private javax.swing.JTextField tamañoDuplicadosVideo;
-    private javax.swing.JTextField tamañoTotalDuplicados;
     private javax.swing.JTextField textFieldCantidadTotal;
     private javax.swing.JTextField textFieldFotosCantidad;
     private javax.swing.JTextField textFieldFotosPeso;
     private javax.swing.JTextField textFieldMusicaCantidad;
     private javax.swing.JTextField textFieldMusicaPeso;
     private javax.swing.JTextField textFieldPesoTotal;
+    private javax.swing.JTextField textFieldTotalCantidad;
+    private javax.swing.JTextField textFieldTotalDuplicados;
     private javax.swing.JTextField textFieldVideoCantidad;
     private javax.swing.JTextField textFieldVideoPeso;
     // End of variables declaration//GEN-END:variables
