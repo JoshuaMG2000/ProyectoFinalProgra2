@@ -85,7 +85,7 @@ public class JFrameVideos extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegresarActionPerformed
     
     public void metodPlayVideo(String rutaArchivo) {                                               
-        if (rutaArchivo.toLowerCase().endsWith(".mp4") || rutaArchivo.toLowerCase().endsWith(".flv")) {
+        if (rutaArchivo.toLowerCase().endsWith(".mp4") || rutaArchivo.toLowerCase().endsWith(".flv")|| rutaArchivo.toLowerCase().endsWith(".mkv")) {
             mediaPlayerComponent.mediaPlayer().media().play(rutaArchivo);
         } else {
             JOptionPane.showMessageDialog(this, "El archivo seleccionado no es un archivo de video compatible.");

@@ -26,11 +26,12 @@ public class JFrameFotos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelParaFotos.setBackground(new java.awt.Color(204, 204, 204));
         labelParaFotos.setOpaque(true);
-        getContentPane().add(labelParaFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 560));
+        getContentPane().add(labelParaFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1190, 590));
 
         botonRegresarFotos.setBackground(new java.awt.Color(0, 51, 51));
         botonRegresarFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -43,7 +44,7 @@ public class JFrameFotos extends javax.swing.JFrame {
                 botonRegresarFotosActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegresarFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 520, 120, 50));
+        getContentPane().add(botonRegresarFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 560, 120, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
