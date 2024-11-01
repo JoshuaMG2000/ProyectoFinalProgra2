@@ -151,14 +151,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jScrollPaneFotos = new javax.swing.JScrollPane();
         tablaDatosFotos = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        jTextFieldBusqueda = new javax.swing.JTextField();
+        mostrarRuta = new javax.swing.JTextField();
         panelAlmacenamientoDuplicados = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         textFieldTotalCantidad = new javax.swing.JTextField();
         tamañoDuplicadosVideo = new javax.swing.JTextField();
         textFieldTotalDuplicados = new javax.swing.JTextField();
         tamañoDuplicadosImagenes = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -168,6 +167,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         cantidadDuplicadosVideo = new javax.swing.JTextField();
         cantidadDuplicadosImagenes = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         botonMusica = new javax.swing.JButton();
         botonVideo = new javax.swing.JButton();
         botonFotos = new javax.swing.JButton();
@@ -175,7 +175,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         eliminarDuplicadosMyV = new javax.swing.JButton();
         botonActualizarAlmacenamientoGeneral = new javax.swing.JButton();
         eliminarDuplicadosFotos = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        fondoPrincipalLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
         seleccionCarpeta = new javax.swing.JMenuItem();
@@ -548,19 +549,20 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         Panel_Fondo.add(panelTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 1320, 230));
 
-        jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 32)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Eras Bold ITC", 1, 32)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REPRODUCTOR MULTIMEDIA JOSH");
-        Panel_Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 790, 40));
+        Panel_Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 790, 70));
 
-        jTextFieldBusqueda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextFieldBusqueda.addActionListener(new java.awt.event.ActionListener() {
+        mostrarRuta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        mostrarRuta.setEnabled(false);
+        mostrarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldBusquedaActionPerformed(evt);
+                mostrarRutaActionPerformed(evt);
             }
         });
-        Panel_Fondo.add(jTextFieldBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 660, 30));
+        Panel_Fondo.add(mostrarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 660, 40));
 
         panelAlmacenamientoDuplicados.setBackground(new java.awt.Color(51, 51, 51));
         panelAlmacenamientoDuplicados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -611,11 +613,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
         panelAlmacenamientoDuplicados.add(tamañoDuplicadosImagenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 100, 30));
-
-        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("CANTIDAD");
-        panelAlmacenamientoDuplicados.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 80, 20));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -692,6 +689,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(204, 0, 102));
         jLabel15.setText("ALMACENAMIENTO DUPLICADOS");
         panelAlmacenamientoDuplicados.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("CANTIDAD");
+        panelAlmacenamientoDuplicados.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 80, 20));
 
         Panel_Fondo.add(panelAlmacenamientoDuplicados, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 250, 240));
 
@@ -786,9 +788,15 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         Panel_Fondo.add(eliminarDuplicadosFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 150, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\fondos\\paletota.jpg")); // NOI18N
-        jLabel3.setInheritsPopupMenu(false);
-        Panel_Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -520, 1830, 1640));
+        jLabel21.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel21.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("RUTA:");
+        Panel_Fondo.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 70, 30));
+
+        fondoPrincipalLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josue\\OneDrive - Universidad Mariano Gálvez\\4. CUARTO SEMESTRE\\PROGRAMACION II\\Proyecto_PrograV3\\src\\main\\resources\\fondos\\paletota.jpg")); // NOI18N
+        fondoPrincipalLabel.setInheritsPopupMenu(false);
+        Panel_Fondo.add(fondoPrincipalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -520, 1830, 1640));
 
         getContentPane().add(Panel_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, -1, 670));
 
@@ -1281,6 +1289,7 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
         File carpetaSeleccionada = selectorCarpeta.getSelectedFile();
         RutaDeAcceso = carpetaSeleccionada.getAbsolutePath(); // Almacenar la ruta de la carpeta en la variable global
         JOptionPane.showMessageDialog(this, "Carpeta seleccionada: " + RutaDeAcceso);
+        mostrarRuta.setText(RutaDeAcceso);
     } else {
         JOptionPane.showMessageDialog(this, "No se seleccionó ninguna carpeta.");
         return;
@@ -1573,9 +1582,9 @@ public void buscarArchivosImagen(File directorio, DefaultTableModel modeloTabla)
     buscarArchivosMP4(new File(RutaDeAcceso), modeloTabla); // Iniciar búsqueda de archivos MP4
     }//GEN-LAST:event_botonVideoActionPerformed
 
-    private void jTextFieldBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBusquedaActionPerformed
+    private void mostrarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRutaActionPerformed
     
-    }//GEN-LAST:event_jTextFieldBusquedaActionPerformed
+    }//GEN-LAST:event_mostrarRutaActionPerformed
    
     private void botonPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPausaActionPerformed
 // Comprobar si el reproductor está activo
@@ -2284,10 +2293,10 @@ private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JT
     private javax.swing.JTextField cantidadDuplicadosVideo;
     private javax.swing.JButton eliminarDuplicadosFotos;
     private javax.swing.JButton eliminarDuplicadosMyV;
+    private javax.swing.JLabel fondoPrincipalLabel;
     private javax.swing.JMenuItem itemVerDuplicadosFotos;
     private javax.swing.JMenuItem itemVerDuplicadosVideosYMusica;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -2298,7 +2307,8 @@ private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JT
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2310,10 +2320,10 @@ private void contarFilas(DefaultTableModel modeloTabla, int columnaExtension, JT
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextFieldBusqueda;
     private javax.swing.JMenu menuOrdenarFotos;
     private javax.swing.JMenu menuOrdenarMyV;
     private javax.swing.JMenu menuVerDuplicados;
+    private javax.swing.JTextField mostrarRuta;
     private javax.swing.JMenuItem ordenXnombre;
     private javax.swing.JMenuItem ordenarFotosXFecha;
     private javax.swing.JMenuItem ordenarFotosXdispositivo;
