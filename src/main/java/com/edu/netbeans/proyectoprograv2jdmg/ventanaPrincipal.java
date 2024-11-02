@@ -753,6 +753,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         eliminarDuplicadosMyV.setBackground(new java.awt.Color(102, 0, 51));
         eliminarDuplicadosMyV.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        eliminarDuplicadosMyV.setForeground(new java.awt.Color(255, 255, 255));
         eliminarDuplicadosMyV.setText("ELIMINAR DUPLICADOS");
         eliminarDuplicadosMyV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         eliminarDuplicadosMyV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -778,6 +779,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         eliminarDuplicadosFotos.setBackground(new java.awt.Color(204, 0, 0));
         eliminarDuplicadosFotos.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        eliminarDuplicadosFotos.setForeground(new java.awt.Color(255, 255, 255));
         eliminarDuplicadosFotos.setText("ELIMINAR DUPLICADOS");
         eliminarDuplicadosFotos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         eliminarDuplicadosFotos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -831,7 +833,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         menuOrdenarMyV.add(ordenXnombre);
 
-        ordenarXartista.setText("Por Artista A-Z");
+        ordenarXartista.setText("Por Artista   A-Z");
         ordenarXartista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordenarXartistaActionPerformed(evt);
@@ -891,7 +893,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         menuOrdenarFotos.add(ordenarFotosXnombre);
 
-        ordenarFotosXFecha.setText("Por Fecha Creación");
+        ordenarFotosXFecha.setText("Por Fecha Creación A-Z");
         ordenarFotosXFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordenarFotosXFechaActionPerformed(evt);
@@ -899,7 +901,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         menuOrdenarFotos.add(ordenarFotosXFecha);
 
-        ordenarFotosXfechaModif.setText("Por Fecha Modificación");
+        ordenarFotosXfechaModif.setText("Por Fecha Modificación A-Z");
         ordenarFotosXfechaModif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordenarFotosXfechaModifActionPerformed(evt);
@@ -907,7 +909,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         menuOrdenarFotos.add(ordenarFotosXfechaModif);
 
-        ordenarFotosXtamaño.setText("Por Tamaño");
+        ordenarFotosXtamaño.setText("Por Tamaño A-Z");
         ordenarFotosXtamaño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordenarFotosXtamañoActionPerformed(evt);
@@ -915,7 +917,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         menuOrdenarFotos.add(ordenarFotosXtamaño);
 
-        ordenarFotosXdispositivo.setText("Por Dispositivo");
+        ordenarFotosXdispositivo.setText("Por Dispositivo A-Z");
         ordenarFotosXdispositivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordenarFotosXdispositivoActionPerformed(evt);
@@ -923,7 +925,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
         menuOrdenarFotos.add(ordenarFotosXdispositivo);
 
-        ordenarFotosXmodelo.setText("Por Modelo Disp.");
+        ordenarFotosXmodelo.setText("Por Modelo Disp. A-Z");
         ordenarFotosXmodelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordenarFotosXmodeloActionPerformed(evt);

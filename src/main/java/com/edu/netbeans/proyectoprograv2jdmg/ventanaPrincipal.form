@@ -45,7 +45,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ordenarXartista">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Por Artista A-Z"/>
+                <Property name="text" type="java.lang.String" value="Por Artista   A-Z"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarXartistaActionPerformed"/>
@@ -108,7 +108,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ordenarFotosXFecha">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Por Fecha Creaci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Por Fecha Creaci&#xf3;n A-Z"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarFotosXFechaActionPerformed"/>
@@ -116,7 +116,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ordenarFotosXfechaModif">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Por Fecha Modificaci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Por Fecha Modificaci&#xf3;n A-Z"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarFotosXfechaModifActionPerformed"/>
@@ -124,7 +124,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ordenarFotosXtama&#xf1;o">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Por Tama&#xf1;o"/>
+                <Property name="text" type="java.lang.String" value="Por Tama&#xf1;o A-Z"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarFotosXtama&#xf1;oActionPerformed"/>
@@ -132,7 +132,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ordenarFotosXdispositivo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Por Dispositivo"/>
+                <Property name="text" type="java.lang.String" value="Por Dispositivo A-Z"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarFotosXdispositivoActionPerformed"/>
@@ -140,7 +140,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ordenarFotosXmodelo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Por Modelo Disp."/>
+                <Property name="text" type="java.lang.String" value="Por Modelo Disp. A-Z"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarFotosXmodeloActionPerformed"/>
@@ -1631,6 +1631,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="11" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="ELIMINAR DUPLICADOS"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -1687,6 +1690,9 @@
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="11" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ELIMINAR DUPLICADOS"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
