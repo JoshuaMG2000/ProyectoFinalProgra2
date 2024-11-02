@@ -1,76 +1,90 @@
 package com.edu.netbeans.proyectoprograv2jdmg;
 
+// --------------------------------------------MANEJO DE ARCHIVOS Y ENTRADAS --------------------------------------------
 // Para leer archivos desde el sistema de archivos.
-import com.github.burningwave.core.io.FileInputStream; 
+import com.github.burningwave.core.io.FileInputStream;
 // Mejora la eficiencia de lectura de archivos con un búfer.
-import java.io.BufferedInputStream; 
-
-// Permite al usuario seleccionar archivos/directorios.
-import javax.swing.JFileChooser; 
-
-// Para mostrar mensajes emergentes (alertas, confirmaciones, etc.).
-import javax.swing.JOptionPane; 
-
-// Maneja archivos y directorios.
-import java.io.File; 
-
+import java.io.BufferedInputStream;
+// Maneja archivos y directorios, permite interactuar con el sistema de archivos.
+import java.io.File;
 // Excepción lanzada por errores de entrada/salida.
-import java.io.IOException; 
-
-// Modelo de datos para JTable (manejo de filas y columnas). CRUD completo
-import javax.swing.table.DefaultTableModel; 
-
-// Para manejar archivos de audio, leer y escribir metadata de archivos de audio.
-import org.jaudiotagger.audio.AudioFile; 
-
-// Lee y escribe archivos de audio. Obtener acceso a los metadatos.
-import org.jaudiotagger.audio.AudioFileIO; 
-
-// Claves para etiquetas de archivos de audio (artista, álbum, etc.).
-import org.jaudiotagger.tag.FieldKey; 
-
-// Representa las etiquetas (metadata) de archivos de audio.
-import org.jaudiotagger.tag.Tag; 
-
-// Reproduce archivos MP3, la uso para reproducir lo de audio.
-import javazoom.jl.player.Player; 
-
-// Maneja metadatos de varios tipos de archivos. (lo uso para videos)
-import org.apache.tika.metadata.Metadata; 
-
-// Detecta el tipo de archivo y extrae contenido o metadata.
-import org.apache.tika.parser.AutoDetectParser; 
-
-// Manejador de contenido para parsing en formato SAX.Simple API for XML) normalmente para procesar el contenido durante el parsing.
-import org.apache.tika.sax.BodyContentHandler; 
-
-// Excepción para errores durante el análisis de archivos XML/SAX.
-import org.xml.sax.SAXException; 
-
-// Clase de la librería VLCJ, Componente para reproducir multimedia incrustado en una ventana.
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent; 
+import java.io.IOException;
 
 
-import com.drew.imaging.ImageMetadataReader;
-import com.drew.imaging.ImageProcessingException;
-import com.drew.metadata.Directory;
-import com.drew.metadata.exif.ExifIFD0Directory;
-import java.awt.Image;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import javax.swing.ImageIcon;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import javax.swing.JTextField;
+// -----------------------------INTERFAZ GRÁFICA DE USUARIO (GUI) DATOS Y TABLAS ----------------------------------------
+// Permite al usuario seleccionar archivos o directorios.
+import javax.swing.JFileChooser;
+// Para mostrar mensajes emergentes (alertas, confirmaciones, etc.).
+import javax.swing.JOptionPane;
+// Modelo de datos para JTable (manejo de filas y columnas) en el CRUD.
+import javax.swing.table.DefaultTableModel;
+// Permite organizar las filas de una tabla según criterios de orden.
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
+// Componente para representar un icono de imagen en la GUI.
+import javax.swing.ImageIcon;
+// Campo de texto que permite la entrada de datos.
+import javax.swing.JTextField;
+
+// --------------------------------------------MANEJO DE ARCHIVOS DE AUDIO ----------------------------------------------
+// Para manejar archivos de audio, leer y escribir metadata.
+import org.jaudiotagger.audio.AudioFile;
+// Lee y escribe archivos de audio, obteniendo acceso a los metadatos.
+import org.jaudiotagger.audio.AudioFileIO;
+// Claves para etiquetas de archivos de audio (artista, álbum, etc.).
+import org.jaudiotagger.tag.FieldKey;
+// Representa las etiquetas (metadata) de archivos de audio.
+import org.jaudiotagger.tag.Tag;
+// Para reproducir archivos MP3.
+import javazoom.jl.player.Player;
+
+
+// --------------------------------------------MANEJO DE ARCHIVOS DE VIDEO --------------------------------------------
+// Maneja metadatos de varios tipos de archivos, pero ya había usado el de audiotagger para audio y no quise cambiar.
+import org.apache.tika.metadata.Metadata;
+// Detecta el tipo de archivo y extrae contenido o metadata.
+import org.apache.tika.parser.AutoDetectParser;
+// Manejador de contenido para analizar archivos XML en formato SAX.
+import org.apache.tika.sax.BodyContentHandler;
+// Excepción para errores durante el análisis de archivos XML/SAX.
+import org.xml.sax.SAXException;
+// Componente VLCJ para reproducción multimedia incrustado en una ventana.
+import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
+
+// --------------------------------------------MANEJO DE ARCHIVOS DE IMÁGENES Y METADATA --------------------------------------------
+// Para leer metadata de imágenes.
+import com.drew.imaging.ImageMetadataReader;
+// Excepción lanzada al procesar imágenes.
+import com.drew.imaging.ImageProcessingException;
+// Contenedor de metadata de varios tipos de archivos.
+import com.drew.metadata.Directory;
+// Para acceder a datos EXIF específicos en una imagen.
+import com.drew.metadata.exif.ExifIFD0Directory;
+// Para manipulación y procesamiento de imágenes.
+import java.awt.Image;
+
+// --------------------------------------------MANEJO Y FORMATEO DE RUTAS Y ARCHIVOS --------------------------------------------
+// Para realizar operaciones de sistema de archivos a través de Path.
+import java.nio.file.Files;
+// Representación de rutas de archivos en el sistema.
+import java.nio.file.Path;
+// Obtiene atributos básicos de los archivos.
+import java.nio.file.attribute.BasicFileAttributes;
+
+// --------------------------------------------MANEJO DE ESTRUCTURAS DE DATOS Y EXPRESIONES REGULARES --------------------------
+// Representación de listas de elementos.
+import java.util.List;
+import java.util.ArrayList;
+// Permite ordenar listas y colecciones.
+import java.util.Collections;
+// Para manejar y eliminar elementos duplicados.
+import java.util.HashSet;
+import java.util.Set;
+// Para trabajar con patrones y coincidencias de texto (expresiones regulares).
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 /**
  *
  * @author Josue David Martinez Galdámez
