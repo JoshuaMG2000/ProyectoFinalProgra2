@@ -20,3 +20,12 @@ archivos duplicados, y obtener estadísticas detalladas sobre el almacenamiento 
 de archivo. Además, la aplicación integra funcionalidad de reproducción de archivos de música y video,
 así mismo visualizar imágenes brindando una experiencia integral de gestión multimedia desde una 
 única plataforma.
+
+## Propósito del Proyecto
+La aplicación fue diseñada para simplificar la gestión de grandes colecciones de archivos multimedia, 
+permitiendo al usuario visualizar los archivos con su metadata detallada, reproducir contenido 
+multimedia, y eliminar duplicados para optimizar el espacio de almacenamiento. Su uso está orientado 
+a cualquier usuario que busque mejorar la organización y administración de sus archivos de audio, video 
+e imagen de forma rápida y eficiente, mediante una plataforma accesible y profesional.
+
+
