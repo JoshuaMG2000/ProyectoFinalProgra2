@@ -96,14 +96,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
    private Player reproductorActual;
    private boolean enPausa = false;
    public  String RutaDeAcceso;
-   private EmbeddedMediaPlayerComponent mediaPlayerComponent;
+   
    
    //CONSTRUCTOR
     public ventanaPrincipal() {
         
         initComponents();
     
-        //EDITAR LOS COMPONENTES SUS PROPIEDADES DESPUES DE INICIALIZARSE COMO LO MANDA NETBEANS GUI
+    //EDITAR LOS COMPONENTES SUS PROPIEDADES DESPUES DE INICIALIZARSE COMO LO MANDA NETBEANS GUI
     tablaDatosMyV.getTableHeader().setReorderingAllowed(false);
     tablaDatosMyV.getTableHeader().setResizingAllowed(false);
     tablaDatosFotos.getTableHeader().setReorderingAllowed(false);
