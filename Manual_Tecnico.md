@@ -25,6 +25,7 @@
      - [Importancia del Método](#importancia-del-método)
    - [Funciones para Calcular el Peso de Archivos](#funciones-para-calcular-el-peso-de-archivos)
      - [Explicación General de `calcularPesoMP3`](#explicación-general-de-calcularpesomp3)
+6. [Explicación de los Métodos de Búsqueda de Archivos](#explicación-de-los-métodos-de-búsqueda-de-archivos)
 
 
 
@@ -275,6 +276,51 @@ Las funciones **calcularPesoMP4** y **calcularPesoImagenes** siguen la misma ló
  - **calcularPesoMP4:** Busca archivos con extensiones .mp4, .mkv, y .flv.
  - **calcularPesoImagenes:** Busca archivos de imagen con extensiones .jpg y .png.
 Estas funciones permiten calcular el tamaño y la cantidad de archivos de diferentes tipos de manera eficiente, asegurando un análisis completo de la carpeta seleccionada.
+
+## Explicación detallada de los Métodos de Búsqueda de Archivos
+
+### 1. Método `buscarArchivosMP3`
+Este método es el más completo y avanzado de los tres. Se encarga de buscar archivos MP3 en un directorio especificado, procesando tanto archivos como subdirectorios de manera **recursiva** y extrayendo metadatos detallados utilizando la librería externa **jaudiotagger**.
+
+**Funcionamiento:**
+- Recibe un `File` (directorio) y un `DefaultTableModel` como parámetros.
+- Recorre recursivamente los archivos y subdirectorios.
+- Filtra archivos con la extensión `.mp3` y utiliza la librería **jaudiotagger** para leer metadatos.
+- Obtiene y muestra información como el nombre del archivo, artista, álbum, género, duración, año de publicación, y tamaño en MB.
+- Agrega una fila de datos al modelo de tabla con esta información.
+
+**Detalles del proceso:**
+- Verifica si el archivo es un directorio y llama recursivamente al método.
+- Procesa archivos `.mp3` y captura posibles excepciones en la lectura de metadatos.
+
+### 2. Método `buscarArchivosMP4`
+Este método es similar al de `buscarArchivosMP3` pero está diseñado para manejar archivos de video con extensiones `.mp4` y `.mkv`. Utiliza la biblioteca **Apache Tika** para la detección y extracción de metadatos.
+
+**Diferencias y funcionamiento:**
+- Utiliza **Apache Tika** en lugar de **jaudiotagger**.
+- Extrae información como nombre del archivo, extensión, artista, álbum, género, duración, y año de publicación.
+- Convierte la duración de milisegundos a segundos si es necesario.
+- Maneja posibles errores de entrada/salida y análisis con un bloque `try-catch`.
+
+### 3. Método `buscarArchivosImagen`
+Este método se centra en la búsqueda y procesamiento de imágenes con extensiones `.jpg` y `.png`, y utiliza la librería **Metadata Extractor** para extraer metadatos específicos de las imágenes.
+
+**Diferencias y funcionamiento:**
+- Se enfoca en obtener metadatos de imágenes como la fecha de creación y modificación, además de detalles del dispositivo y modelo de la cámara.
+- Usa **Metadata Extractor** para recorrer y extraer metadatos EXIF.
+- Agrega información a la tabla como nombre, extensión, ruta completa, tamaño en MB, fechas y detalles del dispositivo.
+- Puede imprimir todos los metadatos para depuración (opcional).
+
+**Diferencias principales entre los métodos:**
+- **Librerías utilizadas**: `buscarArchivosMP3` usa **jaudiotagger**, `buscarArchivosMP4` usa **Apache Tika**, y `buscarArchivosImagen` emplea **Metadata Extractor**.
+- **Tipos de archivos procesados**: Cada método se especializa en un tipo específico (audio, video, imagen).
+- **Información extraída**: Los métodos obtienen distintos metadatos específicos para cada tipo de archivo.
+
+### Resumen
+El método `buscarArchivosMP3` es el más completo debido al nivel de detalle en los metadatos procesados y la complejidad de la información manejada. Los métodos `buscarArchivosMP4` y `buscarArchivosImagen` se diferencian principalmente en las bibliotecas y los tipos de metadatos que manejan, enfocándose en sus tipos de archivo respectivos.
+
+
+
 
 
 
