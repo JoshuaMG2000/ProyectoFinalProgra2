@@ -4,13 +4,29 @@
 1. [Introducción](#introducción)
 2. [Propósito del Proyecto](#propósito-del-proyecto)
 3. [Requisitos Previos del Sistema](#requisitos-previos-del-sistema)
+   - [1. Entorno de Desarrollo](#1-entorno-de-desarrollo)
+   - [2. Software Adicional](#2-software-adicional)
+   - [3. Sistema Operativo Compatible](#3-sistema-operativo-compatible)
+   - [4. Espacio en Disco](#4-espacio-en-disco)
+   - [5. Librerías Externas Utilizadas](#5-librerías-externas-utilizadas)
+     - [Manejo de Archivos y Entradas](#manejo-de-archivos-y-entradas)
+     - [Interfaz Gráfica de Usuario (GUI) y Tablas de Datos](#interfaz-gráfica-de-usuario-gui-y-tablas-de-datos)
+     - [Manejo de Archivos de Audio](#manejo-de-archivos-de-audio)
+     - [Manejo de Archivos de Video](#manejo-de-archivos-de-video)
+     - [Manejo de Archivos de Imágenes y Metadatos](#manejo-de-archivos-de-imágenes-y-metadatos)
+     - [Manejo y Formateo de Rutas y Archivos](#manejo-y-formateo-de-rutas-y-archivos)
+     - [Manejo de Estructuras de Datos y Expresiones Regulares](#manejo-de-estructuras-de-datos-y-expresiones-regulares)
 4. [Utilización del Programa](#utilización-del-programa)
-5. [Configuración Inicial](#configuración-inicial)
-6. [Descripción de Funcionalidades](#descripción-de-funcionalidades)
-7. [Solución de Problemas Comunes](#solución-de-problemas-comunes)
-8. [Mantenimiento y Actualización](#mantenimiento-y-actualización)
-9. [Anexos y Documentación Adicional](#anexos-y-documentación-adicional)
-10. [Contacto y Soporte Técnico](#contacto-y-soporte-técnico)
+   - [Pasos para Ejecutar el Proyecto en NetBeans](#pasos-para-ejecutar-el-proyecto-en-netbeans)
+5. [Funciones Principales](#funciones-principales)
+   - [Método `seleccionCarpetaActionPerformed`](#método-seleccioncarpetaactionperformed)
+     - [Descripción General](#descripción-general)
+     - [Pasos Detallados](#pasos-detallados)
+     - [Importancia del Método](#importancia-del-método)
+   - [Funciones para Calcular el Peso de Archivos](#funciones-para-calcular-el-peso-de-archivos)
+     - [Explicación General de `calcularPesoMP3`](#explicación-general-de-calcularpesomp3)
+
+
 
 ## Introducción
 Este repositorio contiene el código fuente del proyecto **Reproductor de Archivos Multimedia JOSH**. Este proyecto ha sido desarrollado con fines educativos para ser ejecutado en **NetBeans IDE 22**.Este proyecto tiene como objetivo desarrollar una aplicación completa en Java que facilite la gestión, visualización y reproducción de archivos multimedia en distintos formatos (audio, video e imagen). La 
@@ -131,5 +147,137 @@ Este software está diseñado para demostración en un entorno educativo, por lo
 
 7. **Finalizar la Ejecución**
    - Para finalizar la ejecución, simplemente detén el proyecto desde NetBeans o cierra el IDE. No se requiere instalación ni eliminación adicional, ya que el proyecto no guarda archivos en el sistema.
+
+# Funciones Principales
+## Método `seleccionCarpetaActionPerformed`
+
+Este método es fundamental en la aplicación, ya que permite seleccionar la **ruta de acceso** (directorio de trabajo) y recopilar los **datos de almacenaje** y **cantidad de archivos** en esa ruta. A continuación se explican los pasos clave de este método.
+
+### Descripción General
+
+El método `seleccionCarpetaActionPerformed` es un evento que se activa cuando el usuario selecciona una carpeta. Una vez que se selecciona, el programa identifica y calcula el tamaño total y la cantidad de archivos específicos (MP3, MP4, imágenes) presentes en la carpeta.
+
+### Pasos Detallados
+
+1. **Seleccionar la Carpeta**
+   - Se utiliza `JFileChooser` para crear un selector de carpetas, configurado para aceptar solo directorios:
+     ```java
+     JFileChooser selectorCarpeta = new JFileChooser();
+     selectorCarpeta.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+     ```
+   - El selector muestra un diálogo para que el usuario elija una carpeta, y el resultado se almacena en `resultado`.
+
+2. **Verificar la Selección del Usuario**
+   - Si el usuario selecciona una carpeta, el programa obtiene la ruta de la carpeta elegida, la almacena en la variable `RutaDeAcceso`, y la muestra en la interfaz:
+     ```java
+     if (resultado == JFileChooser.APPROVE_OPTION) {
+         File carpetaSeleccionada = selectorCarpeta.getSelectedFile();
+         RutaDeAcceso = carpetaSeleccionada.getAbsolutePath();
+         mostrarRuta.setText(RutaDeAcceso);
+     }
+     ```
+
+3. **Declaración de Contadores para Archivos**
+   - Se declaran contadores para los diferentes tipos de archivos:
+     ```java
+     int[] cantidadMP3 = {0};
+     int[] cantidadMP4 = {0};
+     int[] cantidadImagenes = {0};
+     ```
+   - Estos contadores se utilizan para registrar la cantidad de archivos de cada tipo en la carpeta seleccionada.
+
+4. **Cálculo del Tamaño y Cantidad de Archivos**
+   - Se invocan tres funciones para calcular el tamaño total y la cantidad de archivos de cada tipo en la carpeta:
+     ```java
+     double totalSizeGBMP3 = calcularPesoMP3(new File(RutaDeAcceso), cantidadMP3);
+     double totalSizeGBMP4 = calcularPesoMP4(new File(RutaDeAcceso), cantidadMP4);
+     double totalSizeGBImagenes = calcularPesoImagenes(new File(RutaDeAcceso), cantidadImagenes);
+     ```
+   - Estas funciones recorren la carpeta y suman el tamaño de los archivos (en GB) de cada tipo.
+
+5. **Mostrar el Tamaño Total por Tipo de Archivo**
+   - Los tamaños calculados para cada tipo de archivo se muestran en los campos de texto correspondientes en la interfaz:
+     ```java
+     textFieldMusicaPeso.setText(String.format("%.2f GB", totalSizeGBMP3));
+     textFieldVideoPeso.setText(String.format("%.2f GB", totalSizeGBMP4));
+     textFieldFotosPeso.setText(String.format("%.2f GB", totalSizeGBImagenes));
+     ```
+
+6. **Cálculo del Tamaño y Cantidad Totales**
+   - El tamaño total (suma de todos los archivos) se calcula y muestra en el campo correspondiente:
+     ```java
+     double totalSizeGBTotal = totalSizeGBMP3 + totalSizeGBMP4 + totalSizeGBImagenes;
+     textFieldPesoTotal.setText(String.format("%.2f GB", totalSizeGBTotal));
+     ```
+   - También se muestra la cantidad total de archivos de todos los tipos:
+     ```java
+     int cantidadTotal = cantidadMP3[0] + cantidadMP4[0] + cantidadImagenes[0];
+     textFieldCantidadTotal.setText(String.valueOf(cantidadTotal));
+     ```
+
+### Importancia del Método
+Este método es esencial para la funcionalidad de la aplicación porque:
+- **Establece la Ruta de Acceso**: El directorio seleccionado es donde el programa buscará los archivos.
+- **Calcula y Muestra el Tamaño**: Permite que el usuario visualice el tamaño total de los archivos por tipo (MP3, MP4, imágenes) en gigabytes.
+- **Cuenta los Archivos por Tipo**: Facilita el análisis de la cantidad de archivos de cada tipo en la carpeta seleccionada.
+
+## Funciones para Calcular el Peso de Archivos
+
+Las funciones `calcularPesoMP3`, `calcularPesoMP4`, y `calcularPesoImagenes` están diseñadas para recorrer una carpeta y calcular el tamaño total de archivos específicos en gigabytes (GB). Cada función se enfoca en diferentes tipos de archivos:
+
+- **calcularPesoMP3**: Archivos `.mp3`
+- **calcularPesoMP4**: Archivos de video, tales como `.mp4`, `.mkv`, `.flv`
+- **calcularPesoImagenes**: Archivos de imagen en formatos `.jpg` y `.png`
+
+### Explicación General de `calcularPesoMP3`
+
+La función `calcularPesoMP3` toma como parámetros:
+- Un objeto `File` que representa la carpeta a analizar (`carpeta`).
+- Un arreglo `cantidad` que actúa como contador de archivos encontrados.
+
+El proceso general de la función es el siguiente:
+
+1. **Inicialización del Tamaño Total**  
+   Se inicializa `totalSizeGB` en `0.0` para acumular el tamaño total de archivos `.mp3` encontrados.
+
+   ```java
+   double totalSizeGB = 0.0;
+
+2. **Verificación del Tipo de Archivo**
+  La función verifica que el File recibido (carpeta) sea un directorio. Si es así, obtiene todos los archivos y subdirectorios dentro de él.
+   ```java
+    if (carpeta.isDirectory()) {
+    File[] archivos = carpeta.listFiles();
+    // Validación adicional de contenido
+    }
+3. **Recorrido de Archivos y Subdirectorios**
+    Para cada archivo dentro de archivos:
+  - Si es un archivo .mp3, el tamaño del archivo se convierte de bytes a GB y se suma a totalSizeGB.
+  - Además, el contador cantidad[0] se incrementa para contar el archivo.
+    ```java
+    if (archivo.isFile() && archivo.getName().toLowerCase().endsWith(".mp3")) {
+    totalSizeGB += archivo.length() / (1024.0 * 1024.0 * 1024.0);
+    cantidad[0]++;
+    }
+4. **Recursividad para Subdirectorios**
+    Si se encuentra un subdirectorio, se llama recursivamente a calcularPesoMP3 para incluir el peso y cantidad de archivos en subcarpetas.
+    ```java
+    else if (archivo.isDirectory()) {
+    totalSizeGB += calcularPesoMP3(archivo, cantidad);
+    }
+5. **Retorno del Tamaño Total**
+    Finalmente, la función retorna el tamaño total en GB de todos los archivos .mp3 encontrados.
+    ```java
+     return totalSizeGB;
+
+## Funciones calcularPesoMP4 y calcularPesoImagenes
+Las funciones **calcularPesoMP4** y **calcularPesoImagenes** siguen la misma lógica descrita para **calcularPesoMP3**. Sin embargo, la diferencia radica en los formatos de archivo que buscan:
+ - **calcularPesoMP4:** Busca archivos con extensiones .mp4, .mkv, y .flv.
+ - **calcularPesoImagenes:** Busca archivos de imagen con extensiones .jpg y .png.
+Estas funciones permiten calcular el tamaño y la cantidad de archivos de diferentes tipos de manera eficiente, asegurando un análisis completo de la carpeta seleccionada.
+
+
+
+
 
 
