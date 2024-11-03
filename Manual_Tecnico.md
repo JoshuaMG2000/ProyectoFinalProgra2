@@ -4,7 +4,7 @@
 1. [Introducción](#introducción)
 2. [Propósito del Proyecto](#propósito-del-proyecto)
 3. [Requisitos Previos del Sistema](#requisitos-previos-del-sistema)
-4. [Utilización del Programa](#utilizacion-del-programa)
+4. [Utilización del Programa](#utilización-del-programa)
 5. [Configuración Inicial](#configuración-inicial)
 6. [Descripción de Funcionalidades](#descripción-de-funcionalidades)
 7. [Solución de Problemas Comunes](#solución-de-problemas-comunes)
