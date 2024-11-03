@@ -25,8 +25,11 @@
      - [Importancia del Método](#importancia-del-método)
    - [Funciones para Calcular el Peso de Archivos](#funciones-para-calcular-el-peso-de-archivos)
      - [Explicación General de `calcularPesoMP3`](#explicación-general-de-calcularpesomp3)
-6. [Explicación de los Métodos de Búsqueda de Archivos](#explicación-de-los-métodos-de-búsqueda-de-archivos)
-
+   - [Explicación de los Métodos de Búsqueda de Archivos](#explicación-de-los-métodos-de-búsqueda-de-archivos)
+   - [Métodos de Reproducción de Música](#métodos-de-reproducción-de-música)
+   - [Método de Reproducción de Video](#método-de-reproducción-de-video)
+   - [Método `botonVerImagenActionPerformed`](#método-botonverimagenactionperformed)
+   - [Método Duplicados](#método-duplicados)
 
 
 ## Introducción
@@ -319,11 +322,199 @@ Este método se centra en la búsqueda y procesamiento de imágenes con extensio
 ### Resumen
 El método `buscarArchivosMP3` es el más completo debido al nivel de detalle en los metadatos procesados y la complejidad de la información manejada. Los métodos `buscarArchivosMP4` y `buscarArchivosImagen` se diferencian principalmente en las bibliotecas y los tipos de metadatos que manejan, enfocándose en sus tipos de archivo respectivos.
 
+## Funciones de Reproducción de Música
+
+Las funciones `botonReproducirMusicaActionPerformed`, `botonSiguienteMusicaActionPerformed`, y `botonRegresarMusicaActionPerformed` se encargan de la reproducción de archivos de música `.mp3` seleccionados desde un `JTable`. A continuación, se explica el funcionamiento de cada función y su rol en el sistema.
+
+### Función `botonReproducirMusicaActionPerformed`
+
+Esta función se ejecuta cuando el usuario selecciona un archivo de música y hace clic en el botón de reproducción.
+
+1. **Obtener la Fila Seleccionada**  
+   Se obtiene el índice de la fila seleccionada en el `JTable` para identificar el archivo de música.
+
+   ```java
+   int filaSeleccionada = tablaDatosMyV.getSelectedRow();
+2. **Verificar la Selección de una Fila**  
+   Se comprueba que exista una selección válida. Si es así, se obtiene la ruta del archivo de la columna correspondiente (columna 7).
+    ```java
+    if (filaSeleccionada != -1) {
+    String rutaArchivo = (String) tablaDatosMyV.getValueAt(filaSeleccionada, 7);
+3. **Verificar que el Archivo es .mp3**  
+   Se verifica que el archivo tenga extensión .mp3. Si cumple con esta condición, se intenta reproducir el archivo.
+4. **Reproducir el Archivo**
+   Se cierra el reproductor actual, si está en uso, y se crea una nueva instancia de Player para reproducir el archivo en un hilo separado.
+    ```java
+    reproductorActual = new Player(bis);
+     new Thread(() -> reproductorActual.play()).start();
+5. **Mostrar Mensajes de Error o Incompatibilidad**
+   Si el archivo no es compatible o hay algún error, se muestra un mensaje correspondiente.
+
+### Función `botonSiguienteMusicaActionPerformed`
+Esta función permite pasar a la siguiente canción en la lista de JTable.
+1. **Obtener la Fila Seleccionada y Calcular el Índice Siguiente**
+   Se calcula el índice de la siguiente fila en el JTable.
+    ```java
+   int siguienteIndice = filaSeleccionada + 1;
+2. **Verificar que el Índice Siguiente está Dentro del Rango**
+   Si existe una siguiente canción en la lista, se selecciona y reproduce el archivo correspondiente. Si se está en la última canción, se muestra un mensaje.
+3. **Reproducir la Canción Siguiente**
+   Se usa el mismo proceso de verificación y reproducción que en botonReproducirMusicaActionPerformed.
+### Función `botonRegresarMusicaActionPerformed`
+Esta función permite regresar a la canción anterior en la lista.
+1. **Obtener la Fila Seleccionada y Calcular el Índice Anterior**
+   Se calcula el índice de la fila anterior en el JTable.
+    ```java
+    int anteriorIndice = filaSeleccionada - 1;
+2. **Verificar que el Índice Anterior está Dentro del Rango**
+   Si existe una canción anterior, se selecciona y reproduce el archivo correspondiente. Si se está en la primera canción, se muestra un mensaje.
+3. **Reproducir la Canción Anterior**
+   Utiliza el mismo procedimiento que en botonReproducirMusicaActionPerformed.
+Estas funciones en conjunto permiten controlar la reproducción de archivos .mp3 en el JTable, brindando opciones para reproducir, avanzar y retroceder entre las canciones de forma dinámica y amigable para el usuario.
+
+## Método `botonReproducirVideoActionPerformed`
+
+### Descripción:
+El método `botonReproducirVideoActionPerformed` se encarga de reproducir un video seleccionado de una lista en un `JTable`. Cuando se selecciona un archivo, este método crea y muestra una nueva ventana (`JFrameVideos`) que reproduce el video, ocultando la ventana principal mientras el video está en reproducción.
+
+### Código:
+      ```java
+      private void botonReproducirVideoActionPerformed(java.awt.event.ActionEvent evt) {
+          int filaSeleccionada = tablaDatosMyV.getSelectedRow();
+          if (filaSeleccionada != -1) {
+           String rutaArchivo = (String) tablaDatosMyV.getValueAt(filaSeleccionada, 7); // Asumiendo que la ruta está en la columna 7
+        
+        // Crear una instancia de JFrameVideos y pasar la referencia de ventanaPrincipal
+        JFrameVideos ventanaVideos = new JFrameVideos(this); // Asegúrate de pasar la instancia actual
+        ventanaVideos.metodPlayVideo(rutaArchivo); // Llamar al método para reproducir el video
+        ventanaVideos.setVisible(true); // Mostrar la ventana
+        this.setVisible(false); // Ocultar la ventana principal
+       } else {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un video de la lista.");
+       }
+      }
+1. **Obtener la selección del usuario:**
+   El método obtiene el índice de la fila seleccionada en el JTable mediante tablaDatosMyV.getSelectedRow().
+2. **Verificar selección:**
+   Si hay una fila seleccionada (es decir, el índice no es -1), continúa con la obtención de la ruta del archivo.
+3. **Obtener la ruta del archivo:**
+   Recupera la ruta del archivo desde la columna 7 del JTable (asumiendo un índice basado en 0).
+4. **Instanciar JFrameVideos:**
+   Se crea una instancia de JFrameVideos pasando la instancia actual de la ventana principal (this) para mantener la referencia.
+5. **Reproducir el video:**
+   Llama al método metodPlayVideo de JFrameVideos pasando la ruta del archivo como parámetro.
+6. **Mostrar la ventana de video:**
+   Se muestra la ventana de video (ventanaVideos.setVisible(true)) y se oculta la ventana principal (this.setVisible(false)).
+7. **Manejo de casos sin selección:**
+   Si no hay una fila seleccionada, muestra un mensaje de advertencia al usuario.
+   
+### Comparación con métodos de audio:
+   A diferencia de los métodos de audio como botonReproducirMusicaActionPerformed, este método no utiliza la biblioteca Player para audio, sino que delega la    
+    reproducción a otra clase, JFrameVideos, que se encarga de manejar la reproducción de archivos de video. El enfoque modular permite encapsular la lógica de 
+    reproducción de video en una clase separada, manteniendo la organización del código y la claridad.
+
+### Uso de JFrameVideos:
+JFrameVideos es una clase auxiliar diseñada para manejar la reproducción de video. Se espera que implemente métodos para iniciar la reproducción y posiblemente otras funcionalidades como pausar, detener, etc.
+
+### Beneficios de este enfoque:
+Modularidad: La reproducción de video se maneja en una ventana separada, lo que facilita la expansión o modificación de las funcionalidades de video sin afectar la lógica de la ventana principal.
+Claridad en la interfaz de usuario: La ventana principal se oculta durante la reproducción del video, lo que proporciona una experiencia de usuario más inmersiva.
+Este método es parte integral de una aplicación multimedia que permite al usuario reproducir tanto archivos de audio como de video desde una lista interactiva.
+
+#
+## Método `botonVerImagenActionPerformed`
+
+### Descripción:
+El método `botonVerImagenActionPerformed` se encarga de mostrar una imagen seleccionada en un `JTable` en una nueva ventana (`JFrameFotos`). Este método escala la imagen a un tamaño específico y la muestra en una ventana independiente, ocultando la ventana principal durante la visualización.
 
 
+### Código:
+      ```java
+      private void botonVerImagenActionPerformed(java.awt.event.ActionEvent evt) {
+       // Obtener la fila seleccionada
+       int filaSeleccionada = tablaDatosFotos.getSelectedRow();
+       if (filaSeleccionada != -1) { // Verificar si hay una fila seleccionada
+        // Obtener la ruta de la imagen desde la columna correspondiente
+        String rutaImagen = tablaDatosFotos.getValueAt(filaSeleccionada, 2).toString(); // Se encuentra en la columna 2 la ruta
+        
+        // Crear el ImageIcon original
+        ImageIcon imagenOriginal = new ImageIcon(rutaImagen);
+        
+        // Escalar la imagen al tamaño deseado
+        int ancho = 900; // Ancho fijo
+        int alto = 668;  // Alto fijo
+        Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        
+        // Crear un nuevo ImageIcon a partir de la imagen escalada
+        ImageIcon iconoImagenEscalada = new ImageIcon(imagenEscalada);
+        
+        // Abrir el JFrameFotos y pasarle la instancia de ventanaPrincipal
+        JFrameFotos ventanaFotos = new JFrameFotos(this); 
+        ventanaFotos.setImageIcon(iconoImagenEscalada); // Configura la imagen escalada en el JLabel
+        ventanaFotos.setVisible(true); // Muestra la ventana de fotos
+        this.setVisible(false); // Oculta la ventana principal
+          } else {
+           JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila.");
+          }
+      }
+### Explicación paso a paso:
+1. **Selección de la fila**: Se obtiene la fila seleccionada del `JTable` (`tablaDatosFotos`). Si no hay una selección, se muestra un mensaje al usuario solicitando 
+     una selección.
+2. **Obtención de la ruta de la imagen**: Si hay una fila seleccionada, se extrae la ruta de la imagen desde la columna 2 del `JTable`.
+3. **Carga y escalado de la imagen**:
+   - Se crea un `ImageIcon` usando la ruta obtenida.
+   - La imagen se escala a un tamaño de 900 x 668 píxeles con suavizado (`Image.SCALE_SMOOTH`) para mantener la calidad visual.
+4. **Configuración de la ventana**:
+   - Se instancia `JFrameFotos`, pasando la referencia de la ventana principal para control de visibilidad.
+   - Se asigna la imagen escalada a un componente `JLabel` dentro de `JFrameFotos`.
+5. **Visualización**:
+   - La ventana de imágenes (`JFrameFotos`) se muestra con `setVisible(true)`.
+   - La ventana principal se oculta temporalmente usando `setVisible(false)` para enfocar la vista en la nueva ventana.
+### Comparación con métodos similares:
+Este método es análogo a `botonReproducirMusicaActionPerformed` y `botonReproducirVideoActionPerformed`, que manejan la reproducción de archivos multimedia. Sin embargo, la diferencia radica en el tipo de contenido que manejan:
+- **`botonReproducirMusicaActionPerformed`**: Reproduce archivos de audio (`.mp3`).
+- **`botonReproducirVideoActionPerformed`**: Inicia la reproducción de archivos de video.
+- **`botonVerImagenActionPerformed`**: Muestra imágenes, asegurando un formato adecuado mediante escalado.
+
+Este método proporciona una manera estructurada y clara de gestionar la visualización de imágenes en la aplicación, complementando la funcionalidad multimedia con un enfoque en la presentación visual.
 
 
+## Método Duplicados
 
+### 1. Método `obtenerNombreBase`
+Este método se encarga de tomar el nombre de un archivo y devolver su nombre base, eliminando sufijos como "(n)", "- copia", "- Copy", etc., y extensiones como `.mp3`, `.mp4`, `.jpg`, o `.png`. Es fundamental para normalizar los nombres de los archivos y así facilitar la detección de duplicados.
 
+#### Detalles del funcionamiento:
+- **Expresión regular**: Se utiliza una expresión regular (`regex`) que detecta sufijos comunes y extensiones de archivos.
+- **Salida**: Retorna el nombre base del archivo sin los sufijos ni la extensión, o el nombre original si no coincide con el patrón.
 
+#### Código:
+      ```java
+      private String obtenerNombreBase(String nombreArchivo) {
+       String regex = "^(.*?)(\\s*(\\(\\d+\\)|-\\s*[Cc]opia|-\\s*[Cc]opy))*\\s*(\\.mp3|\\.mp4|\\.jpg|\\.png)?$";
+       Pattern pattern = Pattern.compile(regex);
+       Matcher matcher = pattern.matcher(nombreArchivo);
+    
+       if (matcher.matches()) {
+           return matcher.group(1).trim(); // Retorna el nombre base sin sufijos ni extensiones
+       }
+    
+       return nombreArchivo;
+      }
 
+### 2. Método `buscarDuplicados`
+Este método recorre una tabla (`DefaultTableModel`) para identificar y listar las filas que contienen nombres de archivo duplicados basándose en los nombres base obtenidos con el método `obtenerNombreBase`.
+
+- **Estructuras utilizadas**:
+  - `Set<String> nombresEncontrados`: Para almacenar nombres base únicos.
+  - `Set<String> nombresDuplicados`: Para registrar los nombres que se repiten.
+- **Proceso**:
+  1. La tabla se recorre una vez para identificar qué nombres base están duplicados.
+  2. Se vuelve a recorrer la tabla para recopilar las filas completas que contienen duplicados.
+- **Salida**: Devuelve una lista de arreglos de objetos que representan las filas duplicadas.
+
+### Resumen
+- **`obtenerNombreBase`**: Permite normalizar el nombre de los archivos al eliminar sufijos y extensiones, facilitando la comparación.
+- **`buscarDuplicados`**: Utiliza los nombres normalizados para encontrar y listar las filas duplicadas en una tabla.
+
+Estos métodos son útiles para gestionar listas de archivos y detectar duplicados de manera eficiente en listas de música, videos e imágenes.
