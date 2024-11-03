@@ -4,7 +4,7 @@
 1. [Introducción](#introducción)
 2. [Propósito del Proyecto](#proposito-del-proyecto)
 3. [Requisitos Previos del Sistema](#requisitos-previos-del-sistema)
-4. [Utilización](#utilización)
+4. [Utilización del Programa](#utilizacion-del-programa)
 5. [Configuración Inicial](#configuración-inicial)
 6. [Descripción de Funcionalidades](#descripción-de-funcionalidades)
 7. [Solución de Problemas Comunes](#solución-de-problemas-comunes)
@@ -107,7 +107,7 @@ Este software está diseñado para demostración en un entorno educativo, por lo
 2. **Clonar el Repositorio**
    - Puedes clonar el repositorio directamente en NetBeans o desde la terminal:
      ```bash
-     git clone https://github.com/tu_usuario/nombre_del_proyecto.git
+     git clone [https://github.com/JoshuaMG2000/ProyectoFinalProgra2.git]
      ```
    - Alternativamente, descarga el archivo ZIP del repositorio y extrae los archivos en tu equipo.
 
@@ -126,7 +126,7 @@ Este software está diseñado para demostración en un entorno educativo, por lo
    - NetBeans ejecutará la aplicación en la ventana de salida integrada.
 
 6. **Uso de Funcionalidades**
-   - Al iniciar la aplicación, podrás interactuar con las funcionalidades del reproductor multimedia, como la eliminación de duplicados y la gestión de archivos.
+   - Al iniciar la aplicación, podrás interactuar con las funcionalidades del reproductor multimedia, para saber como utilizarlo dejo acá mismo en el repositorio el MANUAL DE USUARIO en formato PDF.
    - Puedes detener la ejecución en cualquier momento con el botón `Stop` en la barra de herramientas.
 
 7. **Finalizar la Ejecución**
