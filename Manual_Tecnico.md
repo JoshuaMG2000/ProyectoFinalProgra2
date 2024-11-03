@@ -2,7 +2,7 @@
 
 ## Tabla de Contenidos
 1. [Introducción](#introducción)
-2. [Propósito del Proyecto](#proposito-del-proyecto)
+2. [Propósito del Proyecto](#propósito-del-proyecto)
 3. [Requisitos Previos del Sistema](#requisitos-previos-del-sistema)
 4. [Utilización del Programa](#utilizacion-del-programa)
 5. [Configuración Inicial](#configuración-inicial)
